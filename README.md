@@ -57,3 +57,11 @@ Screenshots to come!
 Planned future enhancements for the app:
 
 -
+
+<a id="item-six"></a>
+
+## 🔎 Resources / Links
+
+-   [Initial Wireframes](https://www.figma.com/file/kGZDQ7w3JM5P3DmKD5l1LK/Project-2-Wireframes?type=design&node-id=0%3A1&mode=design&t=vPxW2SMYDmTOVvFf-1)
+-   [ERD](https://miro.com/app/board/uXjVNKYebR0=/?share_link_id=298463988797)
+-   [User Stories Trello Board](https://trello.com/b/PgzfXyUs/general-assembly-project-2)
