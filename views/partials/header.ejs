@@ -11,11 +11,15 @@
 
 <body>
     <nav>
-        <a href="/">HOME</a>
+        <a href="/" class="nav-home">HOME</a>
         <% if (user) { %>
+            <a href="/cats">CATS</a>
+            <a href="/users">FOSTER CARERS</a>
+            <a href="/vets">VETS</a>
             <a href="/logout">LOG OUT</a>
             <% } else { %>
                 <a href="/auth/google" class="login">LOG IN</a>
                 <% } %>
+
     </nav>
     <main>

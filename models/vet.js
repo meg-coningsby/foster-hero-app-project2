@@ -14,13 +14,7 @@ const vetSchema = new Schema(
         phone: {
             type: Number,
         },
-        contact: {
-            type: String,
-        },
         webiste: {
-            type: String,
-        },
-        description: {
             type: String,
         },
     },

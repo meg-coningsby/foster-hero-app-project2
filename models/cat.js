@@ -29,6 +29,9 @@ const catSchema = new Schema(
             type: String,
             required: true,
         },
+        image: {
+            type: String,
+        },
         carer: {
             type: Schema.Types.ObjectId,
             ref: 'User',
