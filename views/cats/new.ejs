@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+    <h1>ADD A CAT</h1>
+
+    <form id="new-form" action="/cats" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name"><br>
+        <label>Image URL:</label>
+        <input type="text" name="imageURL"><br>
+        <label>Foster Carer:</label>
+        <input type="text" name="user"><br>
+        <label>Intake Date:
+            <input type="datetime-local" name="intake">
+        </label><br>
+        <label>Gender:
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="html">Female</label>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label><br>
+        </label><br>
+        <label>Birthdate:
+            <input type="datetime-local" name="birthDate">
+        </label><br>
+        <label>Colour:</label>
+        <input type="text" name="colour"><br>
+        <label>Health Status:</label>
+        <select name="healthStatus">
+            <option value="Healthy">Healthy</option>
+            <option value="Recovering">Recovering</option>
+            <option value="Unwell">Unwell</option>
+        </select><br>
+        <label>Microchip Number:</label>
+        <input type="number" name="microchip"><br>
+        <label>Vaccinated:</label>
+        <input type="checkbox" name="vaccinated"><br>
+        <label>Desexed:</label>
+        <input type="checkbox" name="desexed"><br>
+        <label>Adopted:</label>
+        <input type="checkbox" name="adopted"><br>
+        <label>Adoption Date:
+            <input type="datetime-local" name="adoptDate">
+        </label><br>
+        <input type="submit" value="Add Cat">
+    </form>
+
+    <%- include('../partials/footer') %>

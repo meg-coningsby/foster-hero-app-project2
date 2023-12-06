@@ -64,7 +64,7 @@ const catSchema = new Schema(
             max: 999999999999999,
             unique: true,
         },
-        vaccination: {
+        vaccinated: {
             type: Boolean,
             default: false,
         },
@@ -72,7 +72,7 @@ const catSchema = new Schema(
             type: Boolean,
             default: false,
         },
-        adoption: {
+        adopted: {
             type: Boolean,
             default: false,
         },

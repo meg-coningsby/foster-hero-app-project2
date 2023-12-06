@@ -13,9 +13,29 @@
     <nav>
         <a href="/" class="nav-home">HOME</a>
         <% if (user) { %>
-            <a href="/cats">CATS</a>
-            <a href="/users">FOSTER CARERS</a>
-            <a href="/vets">VETS</a>
+            <div class="dropdown">
+                <a href="/cats" class="dropdown-main">CATS</a>
+                <div class="dropdown-content">
+                    <a href="/cats/new">ADD A NEW CAT</a>
+                    <a href="/cats">ALL CATS</a>
+                    <a href="/cats">CATS IN CARE</a>
+                    <a href="/cats">ADOPTABLE CATS</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="/users" class="dropdown-main">FOSTER CARERS</a>
+                <div class="dropdown-content">
+                    <a href="/cats">ALL FOSTER CARERS</a>
+                    <a href="/cats">ACTIVE FOSTER CARERS</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="/vets" class="dropdown-main">VETS</a>
+                <div class="dropdown-content">
+                    <a href="/cats">ALL VETS</a>
+                    <a href="/cats">ALL VET APPOINTMENTS</a>
+                </div>
+            </div>
             <a href="/logout">LOG OUT</a>
             <% } else { %>
                 <a href="/auth/google" class="login">LOG IN</a>
