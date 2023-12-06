@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const session = require('express-sessiom');
+const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 
@@ -12,11 +12,13 @@ require('./config/database');
 require('./config/passport');
 
 const indexRouter = require('./routes/index');
-const catsRouter = require('./routes/cats');
-const notesRouter = require('./routes/notes');
-const usersRouter = require('./routes/users');
-const vetsRouter = require('./routes/vets');
-const apptsRouter = require('./routes/appts');
+// const catsRouter = require('./routes/cats');
+// const notesRouter = require('./routes/notes');
+// const usersRouter = require('./routes/users');
+// const vetsRouter = require('./routes/vets');
+// const apptsRouter = require('./routes/appts');
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -30,6 +32,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -39,11 +49,15 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/cats', catsRouter);
-app.use('/', notesRouter);
-app.use('/users', usersRouter); // check if these are right
-app.use('/vets', vetsRouter); // check if these are right
-app.use('/', apptsRouter); // check if these are right
+// app.use('/cats', catsRouter);
+// app.use('/', notesRouter);
+// app.use('/users', usersRouter); // check if these are right
+// app.use('/vets', vetsRouter); // check if these are right
+// app.use('/', apptsRouter); // check if these are right
+
+app.listen(+PORT, () => {
+    console.info(`App listening on port ${PORT}`);
+});
 
 app.use(function (req, res, next) {
     next(createError(404));
