@@ -31,11 +31,12 @@ const catSchema = new Schema(
         },
         image: {
             type: String,
+            default:
+                'https://github.com/meg-coningsby/foster-hero-app-project2/blob/main/public/images/no-cat-image.png?raw=true',
         },
         carer: {
             type: Schema.Types.ObjectId,
             ref: 'User',
-            required: true,
         },
         intake: {
             type: Date,
@@ -43,26 +44,19 @@ const catSchema = new Schema(
         gender: {
             type: String,
             enum: ['Female', 'Male'],
-            required: true,
         },
         birthDate: {
             type: Date,
-            required: true,
         },
         colour: {
             type: String,
-            required: true,
         },
         healthStatus: {
             type: String,
             enum: ['Healthy', 'Recovering', 'Unwell'],
-            required: true,
         },
-        microchip: {
+        microchipNumber: {
             type: Number,
-            min: 100000000,
-            max: 999999999999999,
-            unique: true,
         },
         vaccinated: {
             type: Boolean,
