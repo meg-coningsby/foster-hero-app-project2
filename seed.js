@@ -7,22 +7,22 @@ const Vet = require('./models/vet');
 
 const data = require('./data');
 
-(async function () {
-    const p1 = Cat.deleteMany({});
-    const p2 = User.deleteMany({});
-    const p3 = Vet.deleteMany({});
+// (async function () {
+//     const p1 = Cat.deleteMany({});
+//     const p2 = User.deleteMany({});
+//     const p3 = Vet.deleteMany({});
 
-    let results = await Promise.all([p1]);
+//     let results = await Promise.all([p1]);
 
-    console.log(results);
+//     console.log(results);
 
-    results = await Promise.all([
-        Cat.create(data.cats),
-        User.create(data.users),
-        Vet.create(data.vets),
-    ]);
-    console.log('Created cats:', results[0]);
-    console.log('Created users:', results[1]);
-    console.log('Created vets:', results[2]);
-    process.exit();
-})();
+//     results = await Promise.all([
+//         Cat.create(data.cats),
+//         User.create(data.users),
+//         Vet.create(data.vets),
+//     ]);
+//     console.log('Created cats:', results[0]);
+//     console.log('Created users:', results[1]);
+//     console.log('Created vets:', results[2]);
+//     process.exit();
+// })();

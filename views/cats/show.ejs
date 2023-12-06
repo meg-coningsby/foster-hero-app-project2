@@ -1,5 +1,64 @@
-<%- include('./partials/header') %>
-    <h1>CATS NAME</h1>
-    <!-- UPDATE TO PULL THROUGH THE NAME -->
+<%- include('../partials/header') %>
+    <h1><%= cat.name %></h1>
 
-<%- include('./partials/footer') %>
+    <section id="cat-show-page">
+        <div class="show-cat-image">
+            <img src="<%= cat.image %>">
+        </div>
+        <div class="show-cat-details">
+            <h3>Cat Details</h3>
+            <div>
+                <strong>Foster Carer:</strong><%= cat.carer %>
+            </div>
+            <div>
+                <strong>Intake Date: </strong><%= cat.intake %>
+            </div>
+            <div>
+                <strong>Gender: </strong><%= cat.gender %>
+            </div>
+            <div>
+                <strong>Birth Date: </strong><%= cat.birthDate %>
+            </div>
+            <div>
+                <strong>Colour: </strong>
+                <%= cat.colour %>
+            </div>
+            <div>
+                <strong>Health Status: </strong>
+                <%= cat.healthStatus %>
+            </div>
+            <div>
+                <strong>Microchip Number: </strong>
+                <%= cat.microchipNumber %>
+            </div>
+            <div>
+                <strong>Vaccinated: </strong>
+                <%= cat.vaccinated %>
+            </div>
+            <div>
+                <strong>Desexed: </strong>
+                <%= cat.desexed %>
+            </div>
+            <div>
+                <strong>Adopted: </strong>
+                <%= cat.adopted %>
+            </div>
+            <div>
+                <strong>Adopt Date: </strong>
+                <%= cat.adoptDate %>
+            </div>
+            <div class="show-cat-buttons">
+                <a href="/cats" class="edit-cat-link">EDIT / UPDATE CAT</a>
+                <a href="/cats" class="delete-cat-link">DELETE CAT</a>
+            </div>
+        </div>
+        <div class="show-cat-vet-appts">
+            <h3>Vet Appointments</h3>
+        </div>
+        <div class="show-cat-notes">
+            <h3>Notes</h3>
+        </div>
+    </section>
+
+
+<%- include('../partials/footer') %>

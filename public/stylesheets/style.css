@@ -21,6 +21,7 @@ a:active {
 
 body {
     font-family: 'Roboto', sans-serif;
+    color: var(--main-blue);
     margin: 0;
     height: 100vh;
     display: grid;
@@ -127,3 +128,49 @@ footer {
 }
 
 /* FORM SPECIFIC STYLING */
+
+/* CATS PAGE STYLING */
+.all-cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    padding: 1em 0em;
+}
+
+.cat-image img {
+    width: 50%;
+}
+
+.show-cat-image img {
+    width: 30%;
+}
+
+.show-cat-details div {
+    padding: 1em 0 0 0;
+}
+
+.show-cat-buttons {
+    padding: 1em 0;
+}
+
+.edit-cat-link {
+    background-color: var(--main-blue);
+    padding: 0.3em;
+    color: white;
+    border-radius: 5px;
+}
+
+.delete-cat-link {
+    background-color: var(--beige);
+    padding: 0.3em;
+    color: white;
+    border-radius: 5px;
+}
+
+.edit-cat-link:hover {
+    color: var(--beige);
+}
+.delete-cat-link:hover {
+    color: var(--main-blue);
+}
