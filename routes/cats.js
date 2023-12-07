@@ -8,5 +8,6 @@ router.get('/:id', catsController.show);
 router.post('/', catsController.create);
 router.put('/:id', catsController.update);
 router.get('/:id/edit', catsController.edit);
+router.delete('/:id', catsController.delete);
 
 module.exports = router;

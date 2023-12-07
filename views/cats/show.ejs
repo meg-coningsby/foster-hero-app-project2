@@ -50,6 +50,11 @@
             <div class="show-cat-buttons">
                 <a href="/cats/<%= cat._id %>/edit" class="edit-cat-link">EDIT / UPDATE CAT</a>
                 <a href="/cats" class="delete-cat-link">DELETE CAT</a>
+                <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
+                    <div>
+                        <input id="name-delete" type="submit" name="name" value="Remove <%= cat.name %>" />
+                    </div>
+                </form>
             </div>
         </div>
         <div class="show-cat-vet-appts">

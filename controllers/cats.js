@@ -76,6 +76,18 @@ async function update(req, res) {
     }
 }
 
+async function remove(req, res) {
+    try {
+        const result = await Cat.deleteOne({ _id: req.params.id }).then((r) => {
+            console.log(r);
+        });
+    } catch (err) {
+        console.log(err);
+        res.render(`/cats/${cat._id}`, { errorMsg: err.message });
+    }
+    res.redirect('/cats');
+}
+
 module.exports = {
     index,
     show,
@@ -83,4 +95,5 @@ module.exports = {
     create,
     edit,
     update,
+    delete: remove,
 };
