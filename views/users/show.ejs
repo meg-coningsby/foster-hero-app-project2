@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+    <h1><%= user.name %></h1>
+
+    <section id="user-show-page">
+        <div class="show-user-details">
+            <h3>Foster Carer Details</h3>
+            <div>
+                <strong>Role:</strong>
+                <%= user.role %>
+            </div>
+            <div>
+                <strong>Status: </strong>
+                <%= user.status %>
+            </div>
+        </div>
+        <div class="show-user-cats">
+            <h3><%= user.name %>'s Cats</h3>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>

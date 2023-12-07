@@ -15,7 +15,7 @@ require('./config/passport');
 const indexRouter = require('./routes/index');
 const catsRouter = require('./routes/cats');
 // const notesRouter = require('./routes/notes');
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 // const vetsRouter = require('./routes/vets');
 // const apptsRouter = require('./routes/appts');
 
@@ -62,7 +62,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/cats', catsRouter);
 // app.use('/', notesRouter);
-// app.use('/users', usersRouter); // check if these are right
+app.use('/users', usersRouter);
 // app.use('/vets', vetsRouter); // check if these are right
 // app.use('/', apptsRouter); // check if these are right
 

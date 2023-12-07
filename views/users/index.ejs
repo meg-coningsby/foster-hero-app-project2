@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+    <h1>ALL FOSTER CARERS</h1>
+    <table id="show-list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Cats in Care</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(function(u) { %>
+                <tr>
+                    <td><a href="/users/<%= u._id %>"><%= u.name %></a></td>
+                    <td><%= u.status %></td>
+                    <td>Cats in care to come</td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+<%- include('../partials/footer') %>
