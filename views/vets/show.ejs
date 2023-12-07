@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+    <h1>
+        <%= vet.name %>
+    </h1>
+
+    <section id="vet-show-page">
+        <div class="show-vet-details">
+            <h3>Vet Details</h3>
+            <div>
+                <strong>Address:</strong>
+                <%= vet.address %>
+            </div>
+            <div>
+                <strong>Phone: </strong>
+                <%= vet.phone %>
+            </div>
+            <div>
+                <strong>Website: </strong>
+                <a href="<%= vet.website %>"><%= vet.website %></a>
+            </div>
+        </div>
+        <div class="show-vet-appts">
+            <h3><%= vet.name %> Appointments
+            </h3>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>

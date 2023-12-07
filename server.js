@@ -16,7 +16,7 @@ const indexRouter = require('./routes/index');
 const catsRouter = require('./routes/cats');
 // const notesRouter = require('./routes/notes');
 const usersRouter = require('./routes/users');
-// const vetsRouter = require('./routes/vets');
+const vetsRouter = require('./routes/vets');
 // const apptsRouter = require('./routes/appts');
 
 const PORT = process.env.PORT || 3000;
@@ -63,7 +63,7 @@ app.use('/', indexRouter);
 app.use('/cats', catsRouter);
 // app.use('/', notesRouter);
 app.use('/users', usersRouter);
-// app.use('/vets', vetsRouter); // check if these are right
+app.use('/vets', vetsRouter);
 // app.use('/', apptsRouter); // check if these are right
 
 app.listen(+PORT, () => {
