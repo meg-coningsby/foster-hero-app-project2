@@ -6,5 +6,7 @@ router.get('/', catsController.index);
 router.get('/new', catsController.new);
 router.get('/:id', catsController.show);
 router.post('/', catsController.create);
+router.put('/:id', catsController.update);
+router.get('/:id/edit', catsController.edit);
 
 module.exports = router;

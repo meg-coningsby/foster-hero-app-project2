@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+    <h1>Edit / Update <%= cat.name %></h1>
+    <form id="edit-form" action="/cats/<%= cat.id %>?_method=PUT" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" value="<%= cat.name %>"><br>
+        <label>Image URL:</label>
+        <input type="text" name="imageURL" value="<%= cat.image %>"><br>
+        <label>Foster Carer:</label>
+        <input type="text" name="user" value="<%= cat.user %>"><br>
+        <label>Intake Date:
+            <input type="date" name="intake" value="<%= "intakeDate" %>">
+        </label><br>
+        <label>Gender:
+            <input type="radio" id="female" name="gender" value="Female" <%= cat.gender === "Female" ? 'checked' : '' %>>
+            <label for="html">Female</label>
+            <input type="radio" id="male" name="gender" value="Male" <%= cat.gender === "Male" ? 'checked' : '' %>>
+            <label for="male">Male</label><br>
+        </label><br>
+        <label>Birthdate:
+            <input type="date" name="birthDate" value="<%= birthDate %>">
+        </label><br>
+        <label>Colour:</label>
+        <input type="text" name="colour" value="<%= cat.colour %>"><br>
+        <label>Health Status:</label>
+        <select name="healthStatus">
+            <option value="Healthy" <%= cat.healthStatus === 'Healthy' ? 'selected' : '' %>>Healthy</option>
+            <option value="Recovering" <%= cat.healthStatus === 'Recovering' ? 'selected' : '' %>>Recovering</option>
+            <option value="Unwell" <%= cat.healthStatus === 'Unwell' ? 'selected' : '' %>>Unwell</option>
+        </select><br>
+        <label>Microchip Number:</label>
+        <input type="number" name="microchip" value="<%= cat.microchipNumber %>"><br>
+        <label>Vaccinated:</label>
+        <input type="checkbox" name="vaccinated" <%= cat.vaccinated === true ? 'checked' : '' %>><br>
+        <label>Desexed:</label>
+        <input type="checkbox" name="desexed" <%= cat.desexed === true ? 'checked' : '' %>><br>
+        <label>Adopted:</label>
+        <input type="checkbox" name="adopted" <%= cat.adopted === true ? 'checked' : '' %>><br>
+        <label>Adoption Date:
+            <input type="date" name="adoptDate" value="<%= adoptDate %>">
+        </label><br>
+        <input type="submit" value="Update">
+    </form>
+
+    <%- include('../partials/footer') %>
