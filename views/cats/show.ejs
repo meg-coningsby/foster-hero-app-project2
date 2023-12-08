@@ -62,6 +62,42 @@
         </div>
         <div class="show-cat-notes">
             <h3>Notes</h3>
+            <form id="add-note-form" method="POST" action="/cats/<%= cat._id %>/notes">
+                <label>Note:</label>
+                <textarea name="content"></textarea>
+                <input type="submit" value="Add Note">
+            </form>
+            <% if (cat.notes.length) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Note</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cat.notes.forEach(function(n) { %>
+                            <tr>
+                                <td class="note-user"><img alt="avatar" src="<%= n.userAvatar %>"
+                                        referrerpolicy="no-referrer">
+                                    <%= n.userName %>
+                                </td>
+                                <td>
+                                    <%= n.createdAt.toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <%= n.content %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h5>No Notes Yet</h5>
+                    <% } %>
+
         </div>
     </section>
 
