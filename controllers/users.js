@@ -7,15 +7,18 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-    // I'll need to populate the cat docs instead of ObjectIds
+    const loggedInUserId = req.user._id;
+    console.log(loggedInUserId);
     const user = await User.findById(req.params.id);
     const catsInCare = await Cat.find({
         carer: req.params.id,
     });
+    console.log('user._id', user._id, 'loggedInUser', loggedInUserId);
     res.render('users/show', {
         title: `Foster Carer Details`,
         user,
         catsInCare,
+        loggedInUserId,
     });
 }
 

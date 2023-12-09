@@ -13,9 +13,13 @@
                 <%= user.status %>
             </div>
         </div>
+        <% if (user._id.toString() === loggedInUserId.toString()) { %>
         <div class="show-user-buttons">
             <a href="/users/<%= user._id %>/edit" class="edit-user-link">EDIT / UPDATE FOSTER CARER DETAILS</a>
         </div>
+        <% } else { %>
+            <h5>Not allowed to edit this user</h5>
+            <% } %>
         <div class="show-user-cats">
             <h3><%= user.name %>'s Cats</h3>
             <% if (catsInCare.length) { %>
