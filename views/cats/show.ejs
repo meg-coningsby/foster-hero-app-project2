@@ -134,6 +134,13 @@
                                 <td>
                                     <%= n.content %>
                                 </td>
+                                <td>
+                                    <% if (user?._id.equals(n.user)) { %>
+                                        <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
+                                            <button type="submit">Delete Note</button>
+                                        </form>
+                                        <% } %>
+                                </td>
                             </tr>
                             <% }); %>
                     </tbody>

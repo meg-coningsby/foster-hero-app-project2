@@ -2,6 +2,7 @@ const Cat = require('../models/cat');
 
 module.exports = {
     create,
+    delete: deleteNote,
 };
 
 async function create(req, res) {
@@ -15,5 +16,16 @@ async function create(req, res) {
     } catch (err) {
         console.log(err);
     }
+    res.redirect(`/cats/${cat._id}`);
+}
+
+async function deleteNote(req, res) {
+    const cat = await Cat.findOne({
+        'notes._id': req.params.id,
+        'notes.user': req.user._id,
+    });
+    if (!cat) return res.redirect('/cats');
+    cat.notes.remove(req.params.id);
+    await cat.save();
     res.redirect(`/cats/${cat._id}`);
 }

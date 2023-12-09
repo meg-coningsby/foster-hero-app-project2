@@ -24,7 +24,6 @@ async function show(req, res) {
     const users = await User.find({}).sort('name');
     const vets = await Vet.find({}).sort('name');
     const appts = await Appt.find({ cat: req.params.id }).populate('vet');
-    console.log(appts);
     let fosterCarer = null;
     let fosterCarerName = null;
     if (cat.carer != null) {
