@@ -5,7 +5,7 @@ This is Project 2 for my General Assembly Course - Software Engineering Immsersi
 **Table of Contents:**
 
 -   [App Overview](#item-one)
--   [Technologies Used in Game](#item-two)
+-   [Technologies Used in App](#item-two)
 -   [Getting Started](#item-three)
 -   [Game Screenshots](#item-four)
 -   [Next Steps](#item-five)
@@ -14,21 +14,22 @@ This is Project 2 for my General Assembly Course - Software Engineering Immsersi
 
 ## 📖 App Overview
 
-A management app for animal rescues (more specifically cats, but it could be customised for any animals) that manage foster carers, animals and multiple vets.
+A management app for animal rescue groups (more specifically cats, but it could be customised for any animals) that manage foster carers, animals, vets and vet appointments.
 
 The core features of the app:
 
--   Log in to view the details behind the rescue animals, carers and vets
--   Add, edit or remove animals
--   View all animals
--   Add vet appointments to a specific animal
--   View all rescue approved vets
+-   View all animals that are available for adoption (just as an overview - you can't click in to any animal details).
+-   Log in to view the details behind the rescue animals, foster carers, vets and vet appts.
+-   Add, edit or remove animals, and then allocate them a foster carer.
+-   Add notes or vet appointments to a specific animal.
+-   View all foster carers and the animals that are in, and have previously been, in their care.
+-   View all rescue approved vets, and the appointments at those vets.
 
 <a id="item-two"></a>
 
-## 💻 Technologies Used in Game
+## 💻 Technologies Used in App
 
-This game is coded using:
+This app is coded using:
 
 -   JavaScript
 -   HTML
@@ -48,7 +49,7 @@ More to come.
 
 ## 📸 App Screenshots
 
-Screenshots to come!
+Screenshots to come.
 
 <a id="item-five"></a>
 
@@ -56,7 +57,7 @@ Screenshots to come!
 
 Planned future enhancements for the app:
 
--
+-   Link animals together via a parent or sibling relationship.
 
 <a id="item-six"></a>
 
