@@ -15,7 +15,7 @@
         </div>
         <% if (user._id.toString() === loggedInUserId.toString()) { %>
         <div class="show-user-buttons">
-            <a href="/users/<%= user._id %>/edit" class="edit-user-link">EDIT / UPDATE FOSTER CARER DETAILS</a>
+            <a href="/users/<%= user._id %>/edit" class="button-link-main">EDIT / UPDATE DETAILS</a>
         </div>
         <% } else { %>
             <h5>Not allowed to edit this user</h5>
@@ -26,21 +26,20 @@
                 <table id="show-list">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Cat</th>
                             <th>Status</th>
-                            <th>Image</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% catsInCare.forEach(function(c) { %>
                             <tr>
-                                <td><a href="/cats/<%= c._id %>">
+                                <td><a href="/cats/<%= c._id %>"><img src="<%= c.image %>" class="user-cat-image"></a><br>
+                                    <a href="/cats/<%= c._id %>">
                                         <%= c.name %>
                                     </a></td>
                                 <td>
                                     <%= c.status %>
                                 </td>
-                                <td> <img src="<%= c.image %>"> </td>
                             </tr>
                             <% }) %>
                     </tbody>

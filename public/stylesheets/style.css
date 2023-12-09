@@ -182,6 +182,9 @@ button:hover,
 }
 
 /* form styling */
+label {
+    font-weight: bold;
+}
 
 /* table styling */
 table {
@@ -192,6 +195,7 @@ th,
 td {
     padding: 1em;
     vertical-align: middle;
+    text-align: center;
     background-color: var(--table-grey);
     color: var(--secondary-blue);
 }
@@ -243,4 +247,14 @@ table a:hover {
     border-radius: 50%;
     height: 40px;
     padding-right: 0.5em;
+}
+
+/* user pages styling */
+
+.user-cat-image {
+    width: 100px;
+}
+
+.show-user-buttons {
+    margin: 1em 0;
 }
