@@ -26,3 +26,22 @@ const data = require('./data');
 //     console.log('Created vets:', results[2]);
 //     process.exit();
 // })();
+
+cats = [
+    {
+        name: `Alfie`,
+        status: 'In Care',
+    },
+    {
+        name: `Flynn`,
+        status: 'Adopted',
+    },
+    {
+        name: `Scout`,
+        status: 'Adopted',
+    },
+    {
+        name: `Moe`,
+        status: 'In Care',
+    },
+];

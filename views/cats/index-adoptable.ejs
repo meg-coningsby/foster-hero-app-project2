@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+    <h1>ALL CATS UP FOR ADOPTION</h1>
+    <div class="all-cats">
+        <% cats.forEach(function(c) { %>
+            <div class="cat">
+                <div class="cat-image">
+                    <img src="<%= c.image %>">
+                </div>
+                <div class="cat-name">
+                    <a href="/cats/<%= c._id %>">
+                        <%= c.name %>
+                    </a>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+
+<%- include('../partials/footer') %>
