@@ -9,5 +9,6 @@ router.post('/', catsController.create);
 router.put('/:id', catsController.update);
 router.get('/:id/edit', catsController.edit);
 router.delete('/:id', catsController.delete);
+router.post('/:id/users', catsController.addUserToCat);
 
 module.exports = router;

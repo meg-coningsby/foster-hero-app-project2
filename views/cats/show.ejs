@@ -8,7 +8,7 @@
         <div class="show-cat-details">
             <h3>Cat Details</h3>
             <div>
-                <strong>Foster Carer:</strong><%= cat.carer %>
+                <strong>Foster Carer: </strong><%= fosterCarer[0].name %>
             </div>
             <div>
                 <strong>Intake Date: </strong><%= cat.intake %>
@@ -48,6 +48,14 @@
                 <%= cat.adoptDate %>
             </div>
             <div class="show-cat-buttons">
+                <form id="add-user-to-cat" action="/cats/<%= cat._id %>/users" method="POST">
+                    <select name="user">
+                        <%- users.map(u=>
+                            `<option value="${u._id}">${u.name}</option>`
+                            ).join('') %>
+                    </select><br>
+                    <button type="submit">Add / Update Foster Carer</button>
+                </form><br>
                 <a href="/cats/<%= cat._id %>/edit" class="edit-cat-link">EDIT / UPDATE CAT</a>
                 <a href="/cats" class="delete-cat-link">DELETE CAT</a>
                 <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">

@@ -6,14 +6,23 @@ async function index(req, res) {
     res.render('cats/index', { title: 'All Cats', cats });
 }
 
-function newCat(req, res) {
+async function newCat(req, res) {
     res.render('cats/new', { title: 'Add a Cat', errorMsg: '' });
 }
 
 async function show(req, res) {
-    // I'll need to populate the carer and vet appts docs instead of ObjectIds
+    // I'll need to populate the vet appts docs instead of ObjectIds
     const cat = await Cat.findById(req.params.id);
-    res.render('cats/show', { title: `Cat Details`, cat });
+    const users = await User.find({}).sort('name');
+    let fosterCarer = null;
+    if (cat.carer != null) {
+        fosterCarer = await User.find({
+            _id: cat.carer,
+        });
+    } else fosterCarer = null;
+    console.log(`Foster carer`, fosterCarer);
+    console.log('Foster carer name', fosterCarer[0].name);
+    res.render('cats/show', { users, title: `Cat Details`, cat, fosterCarer });
 }
 
 async function create(req, res) {
@@ -88,6 +97,15 @@ async function remove(req, res) {
     res.redirect('/cats');
 }
 
+async function addUserToCat(req, res) {
+    const cat = await Cat.findById(req.params.id);
+    cat.carer = req.body.user;
+    console.log(cat.carer);
+    await cat.save();
+    console.log(cat);
+    res.redirect(`/cats/${cat._id}`);
+}
+
 module.exports = {
     index,
     show,
@@ -96,4 +114,5 @@ module.exports = {
     edit,
     update,
     delete: remove,
+    addUserToCat,
 };
