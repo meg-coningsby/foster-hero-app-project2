@@ -7,7 +7,7 @@ This is Project 2 for my General Assembly Course - Software Engineering Immsersi
 -   [App Overview](#item-one)
 -   [Technologies Used in App](#item-two)
 -   [Getting Started](#item-three)
--   [Game Screenshots](#item-four)
+-   [App Screenshots](#item-four)
 -   [Next Steps](#item-five)
 
 <a id="item-one"></a>
