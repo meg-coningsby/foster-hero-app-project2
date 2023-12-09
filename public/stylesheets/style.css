@@ -32,6 +32,8 @@ body {
         'footer';
 }
 
+/* nav-bar styling */
+
 nav {
     overflow: hidden;
     grid-area: nav;
@@ -53,6 +55,11 @@ nav div {
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
+}
+
+nav .active {
+    color: var(--beige);
+    cursor: default;
 }
 
 .dropdown {
@@ -90,10 +97,14 @@ nav a:hover,
     display: block;
 }
 
+/* main styling */
+
 main {
     grid-area: main;
     padding: 1em 1em;
 }
+
+/* footer styling */
 
 footer {
     grid-area: footer;
@@ -101,9 +112,10 @@ footer {
     color: white;
     font-size: small;
     padding: 1em 1em;
+    line-height: 150%;
 }
 
-/* HOMEPAGE SPECIFIC STYLING */
+/* homepage specific styling */
 
 .homepage-main {
     padding: 2em 0;

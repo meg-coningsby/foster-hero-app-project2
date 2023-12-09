@@ -8,13 +8,12 @@ async function index(req, res) {
 
 async function show(req, res) {
     const loggedInUserId = req.user._id;
-    console.log(loggedInUserId);
     const user = await User.findById(req.params.id);
     const catsInCare = await Cat.find({
         carer: req.params.id,
     });
     res.render('users/show', {
-        title: `Foster Carer Details`,
+        title: `${user.name}`,
         user,
         catsInCare,
         loggedInUserId,
@@ -25,7 +24,7 @@ async function edit(req, res) {
     const loggedInUserId = req.user._id;
     const user = await User.findById(req.params.id);
     if (user._id.toString() === loggedInUserId.toString()) {
-        res.render('users/edit', { user });
+        res.render('users/edit', { user, title: `Edit ${user.name}` });
     } else res.redirect(`/users/${user._id}`);
 }
 

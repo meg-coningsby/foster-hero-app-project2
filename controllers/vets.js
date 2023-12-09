@@ -9,8 +9,7 @@ async function index(req, res) {
 async function show(req, res) {
     const vet = await Vet.findById(req.params.id);
     const appts = await Appt.find({ vet: req.params.id }).populate('cat');
-    console.log(appts);
-    res.render('vets/show', { title: `Vet Details`, vet, appts });
+    res.render('vets/show', { title: `${vet.name}`, vet, appts });
 }
 
 module.exports = {

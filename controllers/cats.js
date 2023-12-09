@@ -34,7 +34,7 @@ async function show(req, res) {
     }
     res.render('cats/show', {
         users,
-        title: `Cat Details`,
+        title: `${cat.name}`,
         cat,
         fosterCarerName,
         vets,
@@ -72,6 +72,7 @@ async function edit(req, res) {
     // console.log(intakeDate, birthDate, adoptDate);
     res.render('cats/edit', {
         cat,
+        title: `Edit ${cat.name}`,
         intakeDate,
         birthDate,
         adoptDate,
@@ -97,7 +98,9 @@ async function update(req, res) {
         res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
-        res.render(`/cats/${cat._id}/edit`, { errorMsg: err.message });
+        res.render(`/cats/${cat._id}/edit`, {
+            errorMsg: err.message,
+        });
     }
 }
 
@@ -107,7 +110,9 @@ async function remove(req, res) {
         res.redirect('/cats');
     } catch (err) {
         console.log(err);
-        res.render(`/cats/${cat._id}`, { errorMsg: err.message });
+        res.render(`/cats/${cat._id}`, {
+            errorMsg: err.message,
+        });
     }
 }
 
