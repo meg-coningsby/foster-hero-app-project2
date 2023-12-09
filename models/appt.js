@@ -10,20 +10,16 @@ const apptSchema = new Schema(
         cat: {
             type: Schema.Types.ObjectId,
             ref: 'Cat',
-            required: true,
         },
         vet: {
             type: Schema.Types.ObjectId,
             ref: 'Vet',
-            required: true,
         },
         date: {
             type: Date,
-            required: true,
         },
         reason: {
             type: String,
-            required: true,
         },
     },
     {

@@ -15,13 +15,13 @@
                 <%= cat.status %>
             </div>
             <div>
-                <strong>Intake Date: </strong><%= cat.intake %>
+                <strong>Intake Date: </strong><%= cat.intake.toLocaleDateString() %>
             </div>
             <div>
                 <strong>Gender: </strong><%= cat.gender %>
             </div>
             <div>
-                <strong>Birth Date: </strong><%= cat.birthDate %>
+                <strong>Birth Date: </strong><%= cat.birthDate.toLocaleDateString() %>
             </div>
             <div>
                 <strong>Colour: </strong>
@@ -66,6 +66,45 @@
         </div>
         <div class="show-cat-vet-appts">
             <h3>Vet Appointments</h3>
+            <form id="add-appt-to-cat" action="/cats/<%= cat._id %>/appts" method="POST">
+                <label>Vet: </label>
+                <select name="vet">
+                    <%- vets.map(v=>
+                        `<option value="${v._id}">${v.name}</option>`
+                        ).join('') %>
+                </select>
+                <label>Date:
+                    <input type="date" name="date">
+                </label><br>
+                <label>Reason: </label>
+                <textarea name="reason"></textarea>
+                <button type="submit">Add Vet Appt</button>
+            </form><br>
+            <% if (cat.appts.length) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vet</th>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cat.appts.forEach(function(a) { %>
+                            <tr>
+                                <td><%= a.name %></td>
+                                <td>
+                                    <%= a.date.toLocaleDateString() %>
+                                </td>
+                                <td><%= a.reason %></td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h5>No Appts Yet</h5>
+                    <% } %>
         </div>
         <div class="show-cat-notes">
             <h3>Notes</h3>
