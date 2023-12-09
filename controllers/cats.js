@@ -116,9 +116,6 @@ async function addUserToCat(req, res) {
     const cat = await Cat.findById(req.params.id);
     cat.carer = req.body.user;
     await cat.save();
-    const user = await User.findById(req.body.user);
-    user.cats.push(req.params.id);
-    await user.save();
     res.redirect(`/cats/${cat._id}`);
 }
 

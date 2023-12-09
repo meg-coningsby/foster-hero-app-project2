@@ -37,8 +37,7 @@
                                 <td>
                                     <%= a.date.toLocaleDateString() %>
                                 </td>
-                                <td>
-                                    <%= a.cat.name %>
+                                <td> <a href="/cats/<%= a.cat._id %>"><%= a.cat.name %></a>
                                 </td>
                                 <td>
                                     <%= a.reason %>

@@ -18,28 +18,32 @@
         </div>
         <div class="show-user-cats">
             <h3><%= user.name %>'s Cats</h3>
-            <table id="show-list">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% catsInCare.forEach(function(c) { %>
+            <% if (catsInCare.length) { %>
+                <table id="show-list">
+                    <thead>
                         <tr>
-                            <td><a href="/cats/<%= c._id %>">
-                                    <%= c.name %>
-                                </a></td>
-                            <td>
-                                <%= c.status %>
-                            </td>
-                            <td> <img src="<%= c.image %>"> </td>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Image</th>
                         </tr>
-                        <% }) %>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <% catsInCare.forEach(function(c) { %>
+                            <tr>
+                                <td><a href="/cats/<%= c._id %>">
+                                        <%= c.name %>
+                                    </a></td>
+                                <td>
+                                    <%= c.status %>
+                                </td>
+                                <td> <img src="<%= c.image %>"> </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <h5>No Cats Yet</h5>
+                <% } %>
         </div>
     </section>
 

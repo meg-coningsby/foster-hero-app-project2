@@ -4,7 +4,7 @@
         <% cats.forEach(function(c) { %>
             <div class="cat">
                 <div class="cat-image">
-                    <img src="<%= c.image %>">
+                    <a href="/cats/<%= c._id %>"><img src="<%= c.image %>"></a>
                 </div>
                 <div class="cat-name">
                     <a href="/cats/<%= c._id %>"><%= c.name %></a>

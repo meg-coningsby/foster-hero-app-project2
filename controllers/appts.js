@@ -1,5 +1,14 @@
 const Cat = require('../models/cat');
 const Appt = require('../models/appt');
+const Vet = require('../models/vet');
+
+async function index(req, res) {
+    let appts = await Appt.find({})
+        .populate('cat')
+        .populate('vet')
+        .sort({ date: -1 });
+    res.render('appts/index', { title: 'All Vet Appts', appts });
+}
 
 async function create(req, res) {
     const cat = await Cat.findById(req.params.id);
@@ -18,5 +27,6 @@ async function create(req, res) {
 }
 
 module.exports = {
+    index,
     create,
 };

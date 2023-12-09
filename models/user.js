@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Cat = require('../models/cat');
-
 const userSchema = new Schema(
     {
         name: {
@@ -23,12 +21,6 @@ const userSchema = new Schema(
             type: String,
             enum: ['Active', 'Inactive'],
         },
-        cats: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Cat',
-            },
-        ],
     },
     {
         timestamps: true,
