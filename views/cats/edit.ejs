@@ -5,8 +5,12 @@
         <input type="text" name="name" value="<%= cat.name %>"><br>
         <label>Image URL:</label>
         <input type="text" name="imageURL" value="<%= cat.image %>"><br>
-        <label>Foster Carer:</label>
-        <input type="text" name="user" value="<%= cat.user %>"><br>
+        <label>Care Status:</label>
+        <select name="status">
+            <option value="In Care" <%=cat.status==='In Care' ? 'selected' : '' %>>In Care</option>
+            <option value="Up for Adoption" <%=cat.status==='Up for Adoption' ? 'selected' : '' %>>Up for Adoption</option>
+            <option value="Adopted" <%=cat.status==='Adopted' ? 'selected' : '' %>>Adopted</option>
+        </select><br>
         <label>Intake Date:
             <input type="date" name="intake" value="<%= "intakeDate" %>">
         </label><br>
@@ -33,8 +37,6 @@
         <input type="checkbox" name="vaccinated" <%= cat.vaccinated === true ? 'checked' : '' %>><br>
         <label>Desexed:</label>
         <input type="checkbox" name="desexed" <%= cat.desexed === true ? 'checked' : '' %>><br>
-        <label>Adopted:</label>
-        <input type="checkbox" name="adopted" <%= cat.adopted === true ? 'checked' : '' %>><br>
         <label>Adoption Date:
             <input type="date" name="adoptDate" value="<%= adoptDate %>">
         </label><br>

@@ -66,9 +66,9 @@ const catSchema = new Schema(
             type: Boolean,
             default: false,
         },
-        adopted: {
-            type: Boolean,
-            default: false,
+        status: {
+            type: String,
+            enum: ['In Care', 'Up for Adoption', 'Adopted'],
         },
         adoptDate: {
             type: Date,

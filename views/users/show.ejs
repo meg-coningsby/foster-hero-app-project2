@@ -18,6 +18,28 @@
         </div>
         <div class="show-user-cats">
             <h3><%= user.name %>'s Cats</h3>
+            <table id="show-list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% catsInCare.forEach(function(c) { %>
+                        <tr>
+                            <td><a href="/cats/<%= c._id %>">
+                                    <%= c.name %>
+                                </a></td>
+                            <td>
+                                <!-- Add in details here once model is update -->
+                            </td>
+                            <td> <img src="<%= c.image %>"> </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
         </div>
     </section>
 

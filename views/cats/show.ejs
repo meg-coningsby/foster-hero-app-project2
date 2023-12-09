@@ -11,6 +11,10 @@
                 <strong>Foster Carer: </strong><%= fosterCarerName %>
             </div>
             <div>
+                <strong>Status: </strong>
+                <%= cat.status %>
+            </div>
+            <div>
                 <strong>Intake Date: </strong><%= cat.intake %>
             </div>
             <div>
@@ -40,10 +44,6 @@
                 <%= cat.desexed %>
             </div>
             <div>
-                <strong>Adopted: </strong>
-                <%= cat.adopted %>
-            </div>
-            <div>
                 <strong>Adopt Date: </strong>
                 <%= cat.adoptDate %>
             </div>
@@ -57,7 +57,6 @@
                     <button type="submit">Add / Update Foster Carer</button>
                 </form><br>
                 <a href="/cats/<%= cat._id %>/edit" class="edit-cat-link">EDIT / UPDATE CAT</a>
-                <a href="/cats" class="delete-cat-link">DELETE CAT</a>
                 <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
                     <div>
                         <input id="name-delete" type="submit" name="name" value="Remove <%= cat.name %>" />

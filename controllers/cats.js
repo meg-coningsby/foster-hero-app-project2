@@ -33,7 +33,6 @@ async function show(req, res) {
 async function create(req, res) {
     req.body.vaccinated = !!req.body.vaccinated;
     req.body.desexed = !!req.body.desexed;
-    req.body.adopted = !!req.body.adopted;
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
@@ -92,14 +91,12 @@ async function update(req, res) {
 
 async function remove(req, res) {
     try {
-        const result = await Cat.deleteOne({ _id: req.params.id }).then((r) => {
-            console.log(r);
-        });
+        const result = await Cat.deleteOne({ _id: req.params.id });
+        res.redirect('/cats');
     } catch (err) {
         console.log(err);
         res.render(`/cats/${cat._id}`, { errorMsg: err.message });
     }
-    res.redirect('/cats');
 }
 
 async function addUserToCat(req, res) {
