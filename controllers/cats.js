@@ -15,14 +15,19 @@ async function show(req, res) {
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
     let fosterCarer = null;
+    let fosterCarerName = null;
     if (cat.carer != null) {
         fosterCarer = await User.find({
             _id: cat.carer,
         });
-    } else fosterCarer = null;
-    console.log(`Foster carer`, fosterCarer);
-    console.log('Foster carer name', fosterCarer[0].name);
-    res.render('cats/show', { users, title: `Cat Details`, cat, fosterCarer });
+        fosterCarerName = fosterCarer[0].name;
+    }
+    res.render('cats/show', {
+        users,
+        title: `Cat Details`,
+        cat,
+        fosterCarerName,
+    });
 }
 
 async function create(req, res) {
@@ -100,9 +105,10 @@ async function remove(req, res) {
 async function addUserToCat(req, res) {
     const cat = await Cat.findById(req.params.id);
     cat.carer = req.body.user;
-    console.log(cat.carer);
     await cat.save();
-    console.log(cat);
+    const user = await User.findById(req.body.user);
+    user.cats.push(req.params.id);
+    await user.save();
     res.redirect(`/cats/${cat._id}`);
 }
 
