@@ -13,7 +13,6 @@ async function show(req, res) {
     const catsInCare = await Cat.find({
         carer: req.params.id,
     });
-    console.log('user._id', user._id, 'loggedInUser', loggedInUserId);
     res.render('users/show', {
         title: `Foster Carer Details`,
         user,
@@ -23,8 +22,11 @@ async function show(req, res) {
 }
 
 async function edit(req, res) {
+    const loggedInUserId = req.user._id;
     const user = await User.findById(req.params.id);
-    res.render('users/edit', { user });
+    if (user._id.toString() === loggedInUserId.toString()) {
+        res.render('users/edit', { user });
+    } else res.redirect(`/users/${user._id}`);
 }
 
 async function update(req, res) {
