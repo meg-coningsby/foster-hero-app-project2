@@ -17,13 +17,14 @@ a:active {
     --secondary-blue: #82a6b6;
     --beige: #e0b38a;
     --secondary-blue-transparent: rgba(130, 166, 182, 0.8);
+    --table-grey: #f0eeee;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     color: var(--main-blue);
     margin: 0;
-    height: 100vh;
+    /* height: 100vh; */
     display: grid;
     grid-template-rows: 50px 1fr 50px;
     grid-template-areas:
@@ -132,6 +133,7 @@ footer {
 
 .filtering-links {
     margin-bottom: 2em;
+    font-size: 14px;
 }
 
 .button-link-main {
@@ -140,17 +142,66 @@ footer {
     margin-right: 0.25em;
     color: white;
     border-radius: 5px;
-}
-
-.button-link-main:hover {
-    color: var(--beige);
+    font-size: 14px;
 }
 
 .active-filter {
     background-color: var(--secondary-blue);
+    font-size: 14px;
+}
+
+button {
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    border-radius: 5px;
+    text-shadow: 0px 0px 0px transparent;
+    background-color: var(--main-blue);
+    padding: 0.5em;
+    margin-right: 0.25em;
+    color: white;
+    font-size: 14px;
+}
+
+.form-input-button {
+    text-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    background-color: var(--main-blue);
+    padding: 0.5em;
+    margin-right: 0.25em;
+    color: white;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.button-link-main:hover,
+button:hover,
+.form-input-button:hover {
+    color: var(--beige);
+    cursor: pointer;
 }
 
 /* form styling */
+
+/* table styling */
+table {
+    margin: 1.5em 0;
+}
+
+th,
+td {
+    padding: 1em;
+    vertical-align: middle;
+    background-color: var(--table-grey);
+    color: var(--secondary-blue);
+}
+
+table a {
+    text-decoration: underline;
+}
+table a:hover {
+    color: var(--beige);
+}
 
 /* cat pages styling */
 .all-cats {
@@ -177,23 +228,19 @@ footer {
     padding: 1em 0;
 }
 
-.edit-cat-link {
-    background-color: var(--main-blue);
-    padding: 0.3em;
-    color: white;
-    border-radius: 5px;
+.show-edit-cat-buttons > div {
+    margin-right: 0.25em;
+    margin-bottom: 2em;
 }
 
-.delete-cat-link {
-    background-color: var(--beige);
-    padding: 0.3em;
-    color: white;
-    border-radius: 5px;
+.note-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.edit-cat-link:hover {
-    color: var(--beige);
-}
-.delete-cat-link:hover {
-    color: var(--main-blue);
+.note-user img {
+    border-radius: 50%;
+    height: 40px;
+    padding-right: 0.5em;
 }

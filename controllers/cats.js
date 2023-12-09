@@ -33,11 +33,32 @@ async function newCat(req, res) {
     res.render('cats/new', { title: 'Add a Cat', errorMsg: '' });
 }
 
+function calculateKittenAge(birthDate) {
+    if (!birthDate) {
+        return null;
+    }
+    const currentDate = new Date();
+    const birthDateObj = new Date(birthDate);
+    const ageInMilliseconds = currentDate - birthDateObj;
+    const ageInYears = ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000);
+    const ageInMonths = ageInYears * 12;
+    const ageInDays = ageInMilliseconds / (24 * 60 * 60 * 1000);
+    if (ageInYears >= 1) {
+        return `${Math.floor(ageInYears)} years`;
+    } else if (ageInMonths >= 1) {
+        return `${Math.floor(ageInMonths)} months`;
+    } else {
+        return `${Math.floor(ageInDays)} days`;
+    }
+}
+
 async function show(req, res) {
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
     const vets = await Vet.find({}).sort('name');
     const appts = await Appt.find({ cat: req.params.id }).populate('vet');
+    const age = calculateKittenAge(cat.birthDate);
+    console.log(age);
     let fosterCarer = null;
     let fosterCarerName = null;
     if (cat.carer != null) {
@@ -53,6 +74,7 @@ async function show(req, res) {
         fosterCarerName,
         vets,
         appts,
+        age,
     });
 }
 

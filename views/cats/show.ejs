@@ -15,13 +15,12 @@
                 <%= cat.status %>
             </div>
             <div>
-                <strong>Intake Date: </strong><%= cat.intake ? cat.intake.toLocaleDateString() : '' %>
+                <strong>Gender: </strong>
+                <%= cat.gender %>
             </div>
             <div>
-                <strong>Gender: </strong><%= cat.gender %>
-            </div>
-            <div>
-                <strong>Birth Date: </strong><%= cat.birthDate ? cat.birthDate.toLocaleDateString() : '' %>
+                <strong>Age: </strong>
+                <%= age %>
             </div>
             <div>
                 <strong>Colour: </strong>
@@ -30,6 +29,14 @@
             <div>
                 <strong>Health Status: </strong>
                 <%= cat.healthStatus %>
+            </div>
+            <div>
+                <strong>Intake Date: </strong>
+                <%= cat.intake ? cat.intake.toLocaleDateString() : '' %>
+            </div>
+            <div>
+                <strong>Birth Date: </strong>
+                <%= cat.birthDate ? cat.birthDate.toLocaleDateString() : '' %>
             </div>
             <div>
                 <strong>Microchip Number: </strong>
@@ -45,19 +52,26 @@
             </div>
             <div>
                 <strong>Adopt Date: </strong><%= cat.adoptDate ? cat.adoptDate.toLocaleDateString() : '' %></div>
-            <div class="show-cat-buttons">
+        </div>
+        <div class="show-edit-cat-buttons">
+            <h3>Edit Cat Details</h3>
+            <div>
                 <form id="add-user-to-cat" action="/cats/<%= cat._id %>/users" method="POST">
                     <select name="user">
                         <%- users.map(u=>
                             `<option value="${u._id}">${u.name}</option>`
                             ).join('') %>
-                    </select><br>
-                    <button type="submit">Add / Update Foster Carer</button>
-                </form><br>
-                <a href="/cats/<%= cat._id %>/edit" class="button-link-main">EDIT / UPDATE CAT</a>
+                    </select>
+                    <button type="submit">ADD / UPDATE FOSTER CARER</button>
+                </form>
+            </div>
+            <div>
+                <a href="/cats/<%= cat._id %>/edit" class="button-link-main">EDIT / UPDATE CAT DETAILS</a>
+            </div>
+            <div>
                 <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
                     <div>
-                        <input id="name-delete" type="submit" name="name" value="Remove <%= cat.name %>" />
+                        <input id="name-delete" type="submit" name="name" value="REMOVE <%= cat.name %>" class="form-input-button"/>
                     </div>
                 </form>
             </div>
@@ -76,7 +90,7 @@
                 </label><br>
                 <label>Reason: </label>
                 <textarea name="reason"></textarea>
-                <button type="submit">Add Vet Appt</button>
+                <button type="submit">ADD VET APPT</button>
             </form><br>
             <% if (appts.length) { %>
                 <table>
@@ -85,7 +99,6 @@
                             <th>Vet</th>
                             <th>Date</th>
                             <th>Reason</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,9 +120,9 @@
         <div class="show-cat-notes">
             <h3>Notes</h3>
             <form id="add-note-form" method="POST" action="/cats/<%= cat._id %>/notes">
-                <label>Note:</label>
-                <textarea name="content"></textarea>
-                <input type="submit" value="Add Note">
+                <label>Add notes or comments here.</label><br>
+                <textarea name="content"></textarea><br>
+                <input type="submit" value="ADD NOTE" class="form-input-button">
             </form>
             <% if (cat.notes.length) { %>
                 <table>
@@ -124,7 +137,8 @@
                     <tbody>
                         <% cat.notes.forEach(function(n) { %>
                             <tr>
-                                <td class="note-user"><img alt="avatar" src="<%= n.userAvatar %>"
+                                <td class="note-user">
+                                    <img alt="avatar" src="<%= n.userAvatar %>"
                                         referrerpolicy="no-referrer">
                                     <%= n.userName %>
                                 </td>
@@ -137,7 +151,7 @@
                                 <td>
                                     <% if (user?._id.equals(n.user)) { %>
                                         <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
-                                            <button type="submit">Delete Note</button>
+                                            <button type="submit">DELETE</button>
                                         </form>
                                         <% } %>
                                 </td>
