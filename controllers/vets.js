@@ -7,9 +7,10 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-    // I'll need to populate the vet appt docs instead of ObjectIds
     const vet = await Vet.findById(req.params.id);
-    res.render('vets/show', { title: `Vet Details`, vet });
+    const appts = await Appt.find({ vet: req.params.id }).populate('cat');
+    console.log(appts);
+    res.render('vets/show', { title: `Vet Details`, vet, appts });
 }
 
 module.exports = {

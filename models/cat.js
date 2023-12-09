@@ -73,12 +73,6 @@ const catSchema = new Schema(
         adoptDate: {
             type: Date,
         },
-        appts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Appt',
-            },
-        ],
         notes: [noteSchema],
     },
     {

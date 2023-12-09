@@ -1,6 +1,7 @@
 const Cat = require('../models/cat');
 const User = require('../models/user');
 const Vet = require('../models/vet');
+const Appt = require('../models/appt');
 
 async function index(req, res) {
     const cats = await Cat.find({});
@@ -19,10 +20,11 @@ async function newCat(req, res) {
 }
 
 async function show(req, res) {
-    // I'll need to populate the vet appts docs instead of ObjectIds
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
     const vets = await Vet.find({}).sort('name');
+    const appts = await Appt.find({ cat: req.params.id }).populate('vet');
+    console.log(appts);
     let fosterCarer = null;
     let fosterCarerName = null;
     if (cat.carer != null) {
@@ -37,6 +39,7 @@ async function show(req, res) {
         cat,
         fosterCarerName,
         vets,
+        appts,
     });
 }
 

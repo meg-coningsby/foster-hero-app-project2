@@ -80,7 +80,7 @@
                 <textarea name="reason"></textarea>
                 <button type="submit">Add Vet Appt</button>
             </form><br>
-            <% if (cat.appts.length) { %>
+            <% if (appts.length) { %>
                 <table>
                     <thead>
                         <tr>
@@ -91,9 +91,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% cat.appts.forEach(function(a) { %>
+                        <% appts.forEach(function(a) { %>
                             <tr>
-                                <td><%= a.name %></td>
+                                <td><%= a.vet.name %></td>
                                 <td>
                                     <%= a.date.toLocaleDateString() %>
                                 </td>

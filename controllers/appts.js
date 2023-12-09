@@ -15,15 +15,6 @@ async function create(req, res) {
         console.log(err);
         res.render('cats/index', { errorMsg: err.message });
     }
-    // req.body.user = req.user._id;
-    // req.body.userName = req.user.name;
-    // req.body.userAvatar = req.user.avatar;
-    // cat.notes.push(req.body);
-    // try {
-    //     await cat.save();
-    // } catch (err) {
-    //     console.log(err);
-    // }
 }
 
 module.exports = {
