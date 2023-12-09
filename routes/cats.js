@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const catsController = require('../controllers/cats');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-router.get('/', catsController.index);
-router.get('/new', catsController.new);
+router.get('/', ensureLoggedIn, catsController.index);
+router.get('/new', ensureLoggedIn, catsController.new);
 router.get('/adoptable', catsController.indexAdoptable);
-router.get('/:id', catsController.show);
-router.post('/', catsController.create);
-router.put('/:id', catsController.update);
-router.get('/:id/edit', catsController.edit);
-router.post('/:id/users', catsController.addUserToCat);
-router.delete('/:id', catsController.delete);
+router.get('/:id', ensureLoggedIn, catsController.show);
+router.post('/', ensureLoggedIn, catsController.create);
+router.put('/:id', ensureLoggedIn, catsController.update);
+router.get('/:id/edit', ensureLoggedIn, catsController.edit);
+router.post('/:id/users', ensureLoggedIn, catsController.addUserToCat);
+router.delete('/:id', ensureLoggedIn, catsController.delete);
 
 module.exports = router;
