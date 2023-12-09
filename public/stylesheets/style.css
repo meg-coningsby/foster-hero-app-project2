@@ -128,20 +128,31 @@ footer {
     padding: 1em 0;
 }
 
-.adoptable-cats-link {
+/* button / link styling */
+
+.filtering-links {
+    margin-bottom: 2em;
+}
+
+.button-link-main {
     background-color: var(--main-blue);
     padding: 0.5em;
+    margin-right: 0.25em;
     color: white;
     border-radius: 5px;
 }
 
-.adoptable-cats-link:hover {
+.button-link-main:hover {
     color: var(--beige);
 }
 
-/* FORM SPECIFIC STYLING */
+.active-filter {
+    background-color: var(--secondary-blue);
+}
 
-/* CATS PAGE STYLING */
+/* form styling */
+
+/* cat pages styling */
 .all-cats {
     display: flex;
     flex-wrap: wrap;

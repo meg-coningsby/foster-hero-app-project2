@@ -15,6 +15,20 @@ async function indexAdoptable(req, res) {
     res.render('cats/index-adoptable', { title: 'Cats Up for Adoption', cats });
 }
 
+async function indexInCare(req, res) {
+    const cats = await Cat.find({
+        status: 'In Care',
+    });
+    res.render('cats/index-inCare', { title: 'Cats In Care', cats });
+}
+
+async function indexAdopted(req, res) {
+    const cats = await Cat.find({
+        status: 'Adopted',
+    });
+    res.render('cats/index-adopted', { title: 'Cats Adopted', cats });
+}
+
 async function newCat(req, res) {
     res.render('cats/new', { title: 'Add a Cat', errorMsg: '' });
 }
@@ -126,6 +140,8 @@ async function addUserToCat(req, res) {
 module.exports = {
     index,
     indexAdoptable,
+    indexInCare,
+    indexAdopted,
     show,
     new: newCat,
     create,

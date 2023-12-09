@@ -6,6 +6,20 @@ async function index(req, res) {
     res.render('users/index', { title: 'All Foster Carers', users });
 }
 
+async function indexActive(req, res) {
+    const users = await User.find({
+        status: 'Active',
+    });
+    res.render('users/index-active', { title: 'Active Foster Carers', users });
+}
+
+async function indexInactive(req, res) {
+    const users = await User.find({
+        status: 'Inactive',
+    });
+    res.render('users/index-inactive', { title: 'Inactive Carers', users });
+}
+
 async function show(req, res) {
     const loggedInUserId = req.user._id;
     const user = await User.findById(req.params.id);
@@ -50,6 +64,8 @@ async function update(req, res) {
 
 module.exports = {
     index,
+    indexActive,
+    indexInactive,
     show,
     edit,
     update,

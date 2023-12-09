@@ -6,6 +6,8 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 router.get('/', ensureLoggedIn, catsController.index);
 router.get('/new', ensureLoggedIn, catsController.new);
 router.get('/adoptable', catsController.indexAdoptable);
+router.get('/incare', ensureLoggedIn, catsController.indexInCare);
+router.get('/adopted', ensureLoggedIn, catsController.indexAdopted);
 router.get('/:id', ensureLoggedIn, catsController.show);
 router.post('/', ensureLoggedIn, catsController.create);
 router.put('/:id', ensureLoggedIn, catsController.update);
