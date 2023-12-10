@@ -33,32 +33,12 @@ async function newCat(req, res) {
     res.render('cats/new', { title: 'Add a Cat', errorMsg: '' });
 }
 
-function calculateKittenAge(birthDate) {
-    if (!birthDate) {
-        return null;
-    }
-    const currentDate = new Date();
-    const birthDateObj = new Date(birthDate);
-    const ageInMilliseconds = currentDate - birthDateObj;
-    const ageInYears = ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000);
-    const ageInMonths = ageInYears * 12;
-    const ageInDays = ageInMilliseconds / (24 * 60 * 60 * 1000);
-    if (ageInYears >= 1) {
-        return `${Math.floor(ageInYears)} years`;
-    } else if (ageInMonths >= 1) {
-        return `${Math.floor(ageInMonths)} months`;
-    } else {
-        return `${Math.floor(ageInDays)} days`;
-    }
-}
-
 async function show(req, res) {
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
     const vets = await Vet.find({}).sort('name');
     const appts = await Appt.find({ cat: req.params.id }).populate('vet');
     const age = calculateKittenAge(cat.birthDate);
-    console.log(age);
     let fosterCarer = null;
     let fosterCarerName = null;
     if (cat.carer != null) {
@@ -98,14 +78,11 @@ async function edit(req, res) {
     let intakeDate = cat.intake;
     let birthDate = cat.birthDate;
     let adoptDate = cat.adoptDate;
-    // console.log(intakeDate, birthDate, adoptDate);
-    intakeDate =
-        intakeDate !== undefined ? String(intakeDate).split('T')[0] : undefined;
-    birthDate =
-        birthDate !== undefined ? String(birthDate).split('T')[0] : undefined;
-    adoptDate =
-        adoptDate !== undefined ? String(adoptDate).split('T')[0] : undefined;
-    // console.log(intakeDate, birthDate, adoptDate);
+    console.log(`First console log`, intakeDate);
+    intakeDate = intakeDate !== undefined ? formatDate(intakeDate) : undefined;
+    birthDate = birthDate !== undefined ? formatDate(birthDate) : undefined;
+    adoptDate = adoptDate !== undefined ? formatDate(adoptDate) : undefined;
+    console.log(`Second console log`, intakeDate);
     res.render('cats/edit', {
         cat,
         title: `Edit ${cat.name}`,
@@ -172,3 +149,34 @@ module.exports = {
     delete: remove,
     addUserToCat,
 };
+
+// Other functions to help with the above
+
+// Calculate Age
+function calculateKittenAge(birthDate) {
+    if (!birthDate) {
+        return null;
+    }
+    const currentDate = new Date();
+    const birthDateObj = new Date(birthDate);
+    const ageInMilliseconds = currentDate - birthDateObj;
+    const ageInYears = ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000);
+    const ageInMonths = ageInYears * 12;
+    const ageInDays = ageInMilliseconds / (24 * 60 * 60 * 1000);
+    if (ageInYears >= 1) {
+        return `${Math.floor(ageInYears)} years`;
+    } else if (ageInMonths >= 1) {
+        return `${Math.floor(ageInMonths)} months`;
+    } else {
+        return `${Math.floor(ageInDays)} days`;
+    }
+}
+
+// Convert the date object into the right string format to be passed in to as a value for the edit page
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}

@@ -218,10 +218,12 @@ table a:hover {
 
 .cat-image img {
     width: 50%;
+    border-radius: 5%;
 }
 
 .show-cat-image img {
     width: 30%;
+    border-radius: 5%;
 }
 
 .show-cat-details div {

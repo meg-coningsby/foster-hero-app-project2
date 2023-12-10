@@ -12,7 +12,7 @@
             <option value="Adopted" <%=cat.status==='Adopted' ? 'selected' : '' %>>Adopted</option>
         </select><br>
         <label>Intake Date:
-            <input type="date" name="intake" value="<%= "intakeDate" %>">
+            <input type="date" name="intake" value="<%= intakeDate %>">
         </label><br>
         <label>Gender:
             <input type="radio" id="female" name="gender" value="Female" <%= cat.gender === "Female" ? 'checked' : '' %>>
