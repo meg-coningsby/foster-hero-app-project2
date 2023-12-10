@@ -45,6 +45,9 @@ const catSchema = new Schema(
             type: String,
             enum: ['Female', 'Male'],
         },
+        age: {
+            type: String,
+        },
         birthDate: {
             type: Date,
         },

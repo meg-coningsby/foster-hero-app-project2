@@ -38,7 +38,6 @@ async function show(req, res) {
     const users = await User.find({}).sort('name');
     const vets = await Vet.find({}).sort('name');
     const appts = await Appt.find({ cat: req.params.id }).populate('vet');
-    const age = calculateKittenAge(cat.birthDate);
     let fosterCarer = null;
     let fosterCarerName = null;
     if (cat.carer != null) {
@@ -54,18 +53,16 @@ async function show(req, res) {
         fosterCarerName,
         vets,
         appts,
-        age,
     });
 }
 
 async function create(req, res) {
     req.body.vaccinated = !!req.body.vaccinated;
     req.body.desexed = !!req.body.desexed;
-    console.log(`First`, req.body);
+    req.body.age = calculateKittenAge(req.body.birthDate);
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
-    console.log(`Second`, req.body);
     try {
         const cat = await Cat.create(req.body);
         res.redirect(`/cats/${cat._id}`);

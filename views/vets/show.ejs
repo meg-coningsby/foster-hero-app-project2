@@ -16,11 +16,15 @@
             </div>
             <div>
                 <strong>Website: </strong>
-                <a href="<%= vet.website %>"><%= vet.website %></a>
+                <a href="<%= vet.website %>">
+                    <%= vet.website %>
+                </a>
             </div>
         </div>
         <div class="show-vet-appts">
-            <h3><%= vet.name %> Appointments</h3>
+            <h3>
+                <%= vet.name %> Appointments
+            </h3>
             <% if (appts.length) { %>
                 <table>
                     <thead>
@@ -28,7 +32,6 @@
                             <th>Date</th>
                             <th>Cat</th>
                             <th>Reason for Visit</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +40,11 @@
                                 <td>
                                     <%= a.date.toLocaleDateString() %>
                                 </td>
-                                <td> <a href="/cats/<%= a.cat._id %>"><%= a.cat.name %></a>
+                                <td><a href="/cats/<%= a.cat._id %>"><img src="<%= a.cat.image %>"
+                                            class="user-cat-image"></a><br>
+                                    <a href="/cats/<%= a.cat._id %>">
+                                        <%= a.cat.name %>
+                                    </a>
                                 </td>
                                 <td>
                                     <%= a.reason %>
