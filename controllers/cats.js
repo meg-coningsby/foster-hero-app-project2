@@ -61,9 +61,11 @@ async function show(req, res) {
 async function create(req, res) {
     req.body.vaccinated = !!req.body.vaccinated;
     req.body.desexed = !!req.body.desexed;
+    console.log(`First`, req.body);
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
+    console.log(`Second`, req.body);
     try {
         const cat = await Cat.create(req.body);
         res.redirect(`/cats/${cat._id}`);
@@ -78,11 +80,9 @@ async function edit(req, res) {
     let intakeDate = cat.intake;
     let birthDate = cat.birthDate;
     let adoptDate = cat.adoptDate;
-    console.log(`First console log`, intakeDate);
     intakeDate = intakeDate !== undefined ? formatDate(intakeDate) : undefined;
     birthDate = birthDate !== undefined ? formatDate(birthDate) : undefined;
     adoptDate = adoptDate !== undefined ? formatDate(adoptDate) : undefined;
-    console.log(`Second console log`, intakeDate);
     res.render('cats/edit', {
         cat,
         title: `Edit ${cat.name}`,
@@ -100,6 +100,7 @@ async function update(req, res) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
+    console.log(req.body);
     try {
         const result = await Cat.updateOne(
             { _id: req.params.id },
@@ -148,6 +149,7 @@ module.exports = {
     update,
     delete: remove,
     addUserToCat,
+    calculateKittenAge,
 };
 
 // Other functions to help with the above

@@ -4,7 +4,7 @@
         <label>Name:</label>
         <input type="text" name="name" value="<%= cat.name %>"><br>
         <label>Image URL:</label>
-        <input type="text" name="imageURL" value="<%= cat.image %>"><br>
+        <input type="text" name="image" value="<%= cat.image %>"><br>
         <label>Care Status:</label>
         <select name="status">
             <option value="In Care" <%=cat.status==='In Care' ? 'selected' : '' %>>In Care</option>
@@ -32,7 +32,7 @@
             <option value="Unwell" <%= cat.healthStatus === 'Unwell' ? 'selected' : '' %>>Unwell</option>
         </select><br>
         <label>Microchip Number:</label>
-        <input type="number" name="microchip" value="<%= cat.microchipNumber %>"><br>
+        <input type="number" name="microchipNumber" value="<%= cat.microchipNumber %>"><br>
         <label>Vaccinated:</label>
         <input type="checkbox" name="vaccinated" <%= cat.vaccinated === true ? 'checked' : '' %>><br>
         <label>Desexed:</label>

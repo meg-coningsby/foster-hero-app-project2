@@ -25,6 +25,7 @@ async function show(req, res) {
     const user = await User.findById(req.params.id);
     const catsInCare = await Cat.find({
         carer: req.params.id,
+        status: { $in: ['In Care', 'Up for Adoption'] },
     });
     res.render('users/show', {
         title: `${user.name}`,

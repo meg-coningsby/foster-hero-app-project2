@@ -21,13 +21,15 @@
             <h5>Not allowed to edit this user</h5>
             <% } %>
         <div class="show-user-cats">
-            <h3><%= user.name %>'s Cats</h3>
+            <h3>Cats In Care & Up For Adoption</h3>
             <% if (catsInCare.length) { %>
                 <table id="show-list">
                     <thead>
                         <tr>
                             <th>Cat</th>
-                            <th>Status</th>
+                            <th>Health Status</th>
+                            <th>Age</th>
+                            <th>Colour</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +40,13 @@
                                         <%= c.name %>
                                     </a></td>
                                 <td>
-                                    <%= c.status %>
+                                    <%= c.healthStatus %>
+                                </td>
+                                <td>
+                                    <%= c.age %>
+                                </td>
+                                <td>
+                                    <%= c.colour %>
                                 </td>
                             </tr>
                             <% }) %>
