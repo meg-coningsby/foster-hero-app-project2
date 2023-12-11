@@ -39,6 +39,11 @@ async function show(req, res) {
     const users = await User.find({}).sort('name');
     const vets = await Vet.find({}).sort('name');
     const appts = await Appt.find({ cat: req.params.id }).populate('vet');
+    const loggedInUserId = req.user._id;
+    const currentUser = await User.find({
+        _id: cat.carer,
+    });
+    const currentUserId = currentUser[0]._id;
     let fosterCarer = null;
     let fosterCarerName = null;
     if (cat.carer != null) {
@@ -54,6 +59,8 @@ async function show(req, res) {
         fosterCarerName,
         vets,
         appts,
+        loggedInUserId,
+        currentUserId,
         errorMsg: '',
     });
 }
@@ -80,28 +87,34 @@ async function create(req, res) {
 }
 
 async function edit(req, res) {
+    const loggedInUserId = req.user._id;
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
     const currentUser = await User.find({
         _id: cat.carer,
     });
     const currentUserName = currentUser[0].name;
+    const currentUserId = currentUser[0]._id;
     let intakeDate = cat.intake;
     let birthDate = cat.birthDate;
     let adoptDate = cat.adoptDate;
     intakeDate = intakeDate !== undefined ? formatDate(intakeDate) : undefined;
     birthDate = birthDate !== undefined ? formatDate(birthDate) : undefined;
     adoptDate = adoptDate !== undefined ? formatDate(adoptDate) : undefined;
-    res.render('cats/edit', {
-        cat,
-        title: `Edit ${cat.name}`,
-        intakeDate,
-        birthDate,
-        adoptDate,
-        users,
-        currentUserName,
-        errorMsg: '',
-    });
+    if (loggedInUserId.toString() === currentUserId.toString()) {
+        res.render('cats/edit', {
+            cat,
+            title: `Edit ${cat.name}`,
+            intakeDate,
+            birthDate,
+            adoptDate,
+            users,
+            currentUserName,
+            loggedInUserId,
+            currentUserId,
+            errorMsg: '',
+        });
+    } else res.redirect(`/cats`);
 }
 
 async function update(req, res) {

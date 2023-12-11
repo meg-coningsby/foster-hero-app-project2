@@ -20,9 +20,9 @@ The core features of the app:
 
 -   View all animals that are available for adoption (just as an overview - you can't click in to any animal details).
 -   Log in to view the details behind the rescue animals, foster carers, vets and vet appts.
--   Add, edit or remove animals, and then allocate them a foster carer.
+-   Add, edit or remove animals.
 -   Add notes or vet appointments to a specific animal.
--   View all foster carers and the animals that are in, and have previously been, in their care.
+-   View all foster carers and then what animals are currently under their care.
 -   View all rescue approved vets, and the appointments at those vets.
 
 <a id="item-two"></a>
@@ -56,7 +56,7 @@ You will need to log in to see most of the pages on the app. Unauthenticated use
 -   Add a vet appointment for a cat you created.
 -   Add or delete notes to a cat. You can only delete a note you created.
 
-Please note, all the data already included in the app is just for demo purposes. No real data was used (although all the cats under the Foster Carer 'Meg C' were all my foster cats at one point - but their data isn't accurate - just their photos and names. All have been adopted and are now in new homes.)
+Please note, all the data already included in the app is just for demo purposes. No real data was used (although all the cats linked to the Foster Carer 'Meg C' were all my foster cats at one point - their data has been made up, but their photos and names are real! All have been adopted and are now in new homes.)
 
 <a id="item-four"></a>
 

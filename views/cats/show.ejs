@@ -66,19 +66,20 @@
                     <%= cat.adoptDate ? cat.adoptDate.toLocaleDateString() : '' %>
                 </div><br>
                 <div class="show-edit-cat-buttons">
-                    <div>
-                        <a href="/cats/<%= cat._id %>/edit" class="button-link-main" id="edit-cat-button">EDIT / UPDATE
-                            CAT DETAILS</a>
-                    </div>
-                    <div>
-                        <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
-                            <input id="name-delete" type="submit" name="name" value="REMOVE <%= cat.name %>"
-                                class="form-input-button" />
-                        </form>
-                        <p>
-                            <%= errorMsg %>
-                        </p>
-                    </div>
+                    <% if (currentUserId.toString()===loggedInUserId.toString()) { %>
+                        <div>
+                            <a href="/cats/<%= cat._id %>/edit" class="button-link-main" id="edit-cat-button">EDIT / UPDATE
+                                CAT DETAILS</a>
+                        </div>
+                        <div>
+                            <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
+                                <input id="name-delete" type="submit" name="name" value="REMOVE <%= cat.name %>"
+                                    class="form-input-button" />
+                            </form>
+                        </div>
+                    <% } else { %>
+                        <h5>Not allowed to edit this cat</h5>
+                        <% } %>
                 </div>
             </div>
             <hr>
