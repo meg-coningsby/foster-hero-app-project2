@@ -6,6 +6,12 @@
         <input type="text" name="name"><br>
         <label>Image URL:</label>
         <input type="text" name="image"><br>
+        <label>Foster Carer:</label>
+        <select name="carer">
+            <%- users.map(u=>
+                `<option value="${u._id}">${u.name}</option>`
+                ).join('') %>
+        </select><br>
         <label>Care Status:</label>
         <select name="status">
             <option value="In Care">In Care</option>

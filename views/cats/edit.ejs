@@ -5,6 +5,12 @@
         <input type="text" name="name" value="<%= cat.name %>"><br>
         <label>Image URL:</label>
         <input type="text" name="image" value="<%= cat.image %>"><br>
+        <label>Foster Carer:</label>
+        <select name="carer">
+            <%- users.map(u=>
+                `<option value="${u._id}">${u.name}</option>`
+                ).join('') %>
+        </select><br>
         <label>Care Status:</label>
         <select name="status">
             <option value="In Care" <%=cat.status==='In Care' ? 'selected' : '' %>>In Care</option>

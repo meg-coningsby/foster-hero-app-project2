@@ -30,7 +30,8 @@ async function indexAdopted(req, res) {
 }
 
 async function newCat(req, res) {
-    res.render('cats/new', { title: 'Add a Cat', errorMsg: '' });
+    const users = await User.find({}).sort('name');
+    res.render('cats/new', { users, title: 'Add a Cat', errorMsg: '' });
 }
 
 async function show(req, res) {
@@ -63,6 +64,7 @@ async function create(req, res) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
+    console.log(req.body);
     try {
         const cat = await Cat.create(req.body);
         res.redirect(`/cats/${cat._id}`);
@@ -74,6 +76,7 @@ async function create(req, res) {
 
 async function edit(req, res) {
     const cat = await Cat.findById(req.params.id);
+    const users = await User.find({}).sort('name');
     let intakeDate = cat.intake;
     let birthDate = cat.birthDate;
     let adoptDate = cat.adoptDate;
@@ -86,6 +89,7 @@ async function edit(req, res) {
         intakeDate,
         birthDate,
         adoptDate,
+        users,
     });
 }
 
