@@ -63,12 +63,10 @@ async function update(req, res) {
                 $set: req.body,
             }
         );
-        console.log(result);
-        res.redirect(`/users/${user._id}`);
     } catch (err) {
         console.log(err);
-        res.render(`/users/${user._id}/edit`, { errorMsg: err.message });
     }
+    res.redirect(`/users/${user._id}`);
 }
 
 module.exports = {

@@ -59,19 +59,23 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
+    const users = await User.find({}).sort('name');
     req.body.vaccinated = !!req.body.vaccinated;
     req.body.desexed = !!req.body.desexed;
     req.body.age = calculateKittenAge(req.body.birthDate);
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
-    console.log(req.body);
     try {
         const cat = await Cat.create(req.body);
         res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
-        res.render('cats/new', { errorMsg: err.message });
+        res.render('cats/new', {
+            users,
+            title: 'Add a Cat',
+            errorMsg: err.message,
+        });
     }
 }
 
@@ -108,7 +112,6 @@ async function update(req, res) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
-    console.log(req.body);
     try {
         const result = await Cat.updateOne(
             { _id: req.params.id },
@@ -116,26 +119,19 @@ async function update(req, res) {
                 $set: req.body,
             }
         );
-        console.log(result);
-        res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
-        res.render(`/cats/${cat._id}/edit`, {
-            errorMsg: err.message,
-        });
     }
+    res.redirect(`/cats/${cat._id}`);
 }
 
 async function remove(req, res) {
     try {
         const result = await Cat.deleteOne({ _id: req.params.id });
-        res.redirect('/cats');
     } catch (err) {
         console.log(err);
-        res.render(`/cats/${cat._id}`, {
-            errorMsg: err.message,
-        });
     }
+    res.redirect('/cats');
 }
 
 module.exports = {
