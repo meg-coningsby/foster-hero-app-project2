@@ -54,6 +54,9 @@ async function show(req, res) {
         fosterCarerName,
         vets,
         appts,
+        errorMsg: '',
+        errorMsgAppts: '',
+        errorMsgNotes: '',
     });
 }
 
@@ -95,6 +98,7 @@ async function edit(req, res) {
         adoptDate,
         users,
         currentUserName,
+        errorMsg: '',
     });
 }
 

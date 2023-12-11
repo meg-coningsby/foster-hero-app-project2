@@ -65,8 +65,10 @@
                                 <input id="name-delete" type="submit" name="name" value="REMOVE <%= cat.name %>" class="form-input-button"/>
                             </div>
                         </form>
+                        <p>
+                            <%= errorMsg %>
+                        </p>
                     </div>
-
                 </div>
             </div>
             <div class="show-cat-vet-appts">
@@ -85,6 +87,9 @@
                     <textarea name="reason"></textarea><br>
                     <button type="submit">ADD VET APPT</button>
                 </form><br>
+                <p>
+                    <%= errorMsgAppts %>
+                </p>
                 <% if (appts.length) { %>
                     <table>
                         <thead>
@@ -117,6 +122,9 @@
                     <textarea name="content"></textarea><br>
                     <input type="submit" value="ADD NOTE" class="form-input-button">
                 </form>
+                <p>
+                    <%= errorMsgNotes %>
+                </p>
                 <% if (cat.notes.length) { %>
                     <table>
                         <thead>

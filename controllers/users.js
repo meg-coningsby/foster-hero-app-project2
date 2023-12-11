@@ -2,8 +2,11 @@ const Cat = require('../models/cat');
 const User = require('../models/user');
 
 async function index(req, res) {
-    const users = await User.find({});
-    res.render('users/index', { title: 'All Foster Carers', users });
+    const users = await User.find({}).sort('name');
+    res.render('users/index', {
+        title: 'All Foster Carers',
+        users,
+    });
 }
 
 async function indexActive(req, res) {
@@ -32,6 +35,7 @@ async function show(req, res) {
         user,
         catsInCare,
         loggedInUserId,
+        errorMsg: '',
     });
 }
 
@@ -39,7 +43,11 @@ async function edit(req, res) {
     const loggedInUserId = req.user._id;
     const user = await User.findById(req.params.id);
     if (user._id.toString() === loggedInUserId.toString()) {
-        res.render('users/edit', { user, title: `Edit ${user.name}` });
+        res.render('users/edit', {
+            user,
+            title: `Edit ${user.name}`,
+            errorMsg: '',
+        });
     } else res.redirect(`/users/${user._id}`);
 }
 
