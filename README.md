@@ -45,6 +45,19 @@ This app is coded using:
 
 Head over to the app [here](https://foster-hero-app.onrender.com/).
 
+1. Log in
+
+You will need to log in to see most of the pages on the app. Unauthenticated users can only see a list of cats that are currently up for adoption - no other pages. Logging in does create a user profile for you - which is added to the app's Foster Carers (as in the real world, all that log in would be members of the rescue group).
+
+2. Browse the app. You will notice that some things are not editable by your user - you can only:
+
+-   Edit or delete your own Foster Carer profile.
+-   Edit or remove any cats you created (all other cats are uneditable by your user).
+-   Add a vet appointment for a cat you created.
+-   Add or delete notes to a cat. You can only delete a note you created.
+
+Please note, all the data already included in the app is just for demo purposes. No real data was used (although all the cats under the Foster Carer 'Meg C' were all my foster cats at one point - but their data isn't accurate - just their photos and names. All have been adopted and are now in new homes.)
+
 <a id="item-four"></a>
 
 ## 📸 App Screenshots
@@ -65,4 +78,4 @@ Planned future enhancements for the app:
 
 -   [Initial Wireframes](https://www.figma.com/file/kGZDQ7w3JM5P3DmKD5l1LK/Project-2-Wireframes?type=design&node-id=0%3A1&mode=design&t=vPxW2SMYDmTOVvFf-1)
 -   [ERD](https://miro.com/app/board/uXjVNKYebR0=/?share_link_id=298463988797)
--   [User Stories Trello Board](https://trello.com/b/PgzfXyUs/general-assembly-project-2)
+-   [Trello Board](https://trello.com/b/PgzfXyUs/general-assembly-project-2): includes user stories and links to the wireframes and ERD.
