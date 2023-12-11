@@ -15,7 +15,6 @@ async function create(req, res) {
         await cat.save();
     } catch (err) {
         console.log(err);
-        res.render(`/cats/${cat._id}`, { errorMsgNotes: err.message });
     }
     res.redirect(`/cats/${cat._id}`);
 }

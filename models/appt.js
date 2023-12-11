@@ -14,12 +14,15 @@ const apptSchema = new Schema(
         vet: {
             type: Schema.Types.ObjectId,
             ref: 'Vet',
+            required: true,
         },
         date: {
             type: Date,
+            required: true,
         },
         reason: {
             type: String,
+            required: true,
         },
     },
     {

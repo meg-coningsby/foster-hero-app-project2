@@ -75,21 +75,18 @@
                 <h3>Vet Appointments</h3>
                 <form id="add-appt-to-cat" action="/cats/<%= cat._id %>/appts" method="POST">
                     <label>Vet: </label>
-                    <select name="vet">
+                    <select name="vet" required>
                         <%- vets.map(v=>
                             `<option value="${v._id}">${v.name}</option>`
                             ).join('') %>
                     </select><br>
                     <label>Date:
-                        <input type="date" name="date">
+                        <input type="date" name="date" required>
                     </label><br>
                     <label>Reason: </label>
-                    <textarea name="reason"></textarea><br>
+                    <textarea name="reason" required></textarea><br>
                     <button type="submit">ADD VET APPT</button>
                 </form><br>
-                <p>
-                    <%= errorMsgAppts %>
-                </p>
                 <% if (appts.length) { %>
                     <table>
                         <thead>
@@ -119,12 +116,9 @@
                 <h3>Notes</h3>
                 <form id="add-note-form" method="POST" action="/cats/<%= cat._id %>/notes">
                     <label>Add notes or comments here.</label><br>
-                    <textarea name="content"></textarea><br>
+                    <textarea name="content" required></textarea><br>
                     <input type="submit" value="ADD NOTE" class="form-input-button">
                 </form>
-                <p>
-                    <%= errorMsgNotes %>
-                </p>
                 <% if (cat.notes.length) { %>
                     <table>
                         <thead>

@@ -55,8 +55,6 @@ async function show(req, res) {
         vets,
         appts,
         errorMsg: '',
-        errorMsgAppts: '',
-        errorMsgNotes: '',
     });
 }
 

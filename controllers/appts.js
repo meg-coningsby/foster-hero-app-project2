@@ -22,7 +22,7 @@ async function create(req, res) {
         res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
-        res.render(`/cats/${cat._id}`, { errorMsgAppts: err.message });
+        res.redirect(`/cats/${cat._id}`);
     }
 }
 
