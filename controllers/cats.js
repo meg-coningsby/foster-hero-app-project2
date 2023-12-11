@@ -158,7 +158,6 @@ module.exports = {
     edit,
     update,
     delete: remove,
-    calculateKittenAge,
 };
 
 // Other functions to help with the above

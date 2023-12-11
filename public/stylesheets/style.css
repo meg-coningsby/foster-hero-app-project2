@@ -344,6 +344,10 @@ ul.breadcrumb li a:hover {
     margin: 1em 0 2em 0;
 }
 
+.show-user-image img {
+    width: 75px;
+}
+
 @media (min-width: 768px) {
     .all-cats {
         display: grid;

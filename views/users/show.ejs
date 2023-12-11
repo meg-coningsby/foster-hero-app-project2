@@ -25,7 +25,14 @@
         </div>
         <% if (user._id.toString()===loggedInUserId.toString()) { %>
             <div class="show-user-buttons">
-                <a href="/users/<%= user._id %>/edit" class="button-link-main">EDIT / UPDATE DETAILS</a>
+                <div>
+                    <a href="/users/<%= user._id %>/edit" class="button-link-main">EDIT / UPDATE DETAILS</a>
+                </div>
+                <div>
+                    <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
+                        <input id="user-delete" type="submit" name="user" value="REMOVE <%= user.name %>" class="form-input-button" />
+                    </form>
+                </div>
             </div>
             <% } else { %>
                 <h5>Not allowed to edit this user</h5>

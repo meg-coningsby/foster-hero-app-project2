@@ -69,6 +69,15 @@ async function update(req, res) {
     res.redirect(`/users/${user._id}`);
 }
 
+async function remove(req, res) {
+    try {
+        const result = await User.deleteOne({ _id: req.params.id });
+    } catch (err) {
+        console.log(err);
+    }
+    res.redirect('/users');
+}
+
 module.exports = {
     index,
     indexActive,
@@ -76,4 +85,5 @@ module.exports = {
     show,
     edit,
     update,
+    delete: remove,
 };
