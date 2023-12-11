@@ -1,6 +1,11 @@
 <%- include('../partials/header') %>
-    <h1>Edit / Update <%= user.name %>
-    </h1>
+    <h1>Edit / Update <%= user.name %></h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">All Foster Carers</a></li>
+        <li><a href="/users/<%= user._id %>"><%= user.name %></a></li>
+        <li>Edit <%= user.name %></li>
+    </ul>
     <form id="edit-form" action="/users/<%= user.id %>?_method=PUT" method="POST">
         <label>Name:</label>
         <input type="text" name="name" value="<%= user.name %>"><br>

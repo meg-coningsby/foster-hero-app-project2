@@ -2,10 +2,13 @@
     <h1>
         <%= cat.name %>
     </h1>
-    <div>
-        <a href="/cats" class="button-link-main">BACK TO ALL CATS</a>
-    </div><br>
-
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/cats">All Cats</a></li>
+        <li>
+            <%= cat.name %>
+        </li>
+    </ul>
     <section id="cat-show-page">
         <div class="cat-show-page-div">
             <div class="show-cat-image">
@@ -59,22 +62,24 @@
                 <div>
                     <strong>Adopt Date: </strong>
                     <%= cat.adoptDate ? cat.adoptDate.toLocaleDateString() : '' %>
-                </div>
-            </div><br>
-            <div class="show-edit-cat-buttons">
-                <div>
-                    <a href="/cats/<%= cat._id %>/edit" class="button-link-main" id="edit-cat-button">EDIT / UPDATE CAT DETAILS</a>
-                </div>
-                <div>
-                    <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
-                        <input id="name-delete" type="submit" name="name" value="REMOVE <%= cat.name %>"
-                            class="form-input-button" />
-                    </form>
-                    <p>
-                        <%= errorMsg %>
-                    </p>
+                </div><br>
+                <div class="show-edit-cat-buttons">
+                    <div>
+                        <a href="/cats/<%= cat._id %>/edit" class="button-link-main" id="edit-cat-button">EDIT / UPDATE
+                            CAT DETAILS</a>
+                    </div>
+                    <div>
+                        <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
+                            <input id="name-delete" type="submit" name="name" value="REMOVE <%= cat.name %>"
+                                class="form-input-button" />
+                        </form>
+                        <p>
+                            <%= errorMsg %>
+                        </p>
+                    </div>
                 </div>
             </div>
+            <hr>
             <div class="show-cat-vet-appts">
                 <h3>Vet Appointments</h3>
                 <form id="add-appt-to-cat" action="/cats/<%= cat._id %>/appts" method="POST">
@@ -120,6 +125,7 @@
                         <h5>No Appts Yet</h5>
                         <% } %>
             </div>
+            <hr>
             <div class="show-cat-notes">
                 <h3>Notes</h3>
                 <form id="add-note-form" method="POST" action="/cats/<%= cat._id %>/notes">

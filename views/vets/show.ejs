@@ -2,11 +2,14 @@
     <h1>
         <%= vet.name %>
     </h1>
-    <a href="/vets" class="button-link-main">BACK TO ALL VETS</a>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/vets">All Vets</a></li>
+        <li><%= vet.name %></li>
+    </ul>
 
     <section id="vet-show-page">
         <div class="show-vet-details">
-            <h3>Vet Details</h3>
             <div>
                 <strong>Address:</strong>
                 <%= vet.address %>

@@ -1,6 +1,10 @@
 <%- include('../partials/header') %>
     <h1>ADD A CAT</h1>
-
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/cats">All Cats</a></li>
+        <li>Add a New Cat</li>
+    </ul>
     <form id="new-form" action="/cats" method="POST">
         <label>Name:</label>
         <input type="text" name="name"><br>

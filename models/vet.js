@@ -14,7 +14,7 @@ const vetSchema = new Schema(
         phone: {
             type: Number,
         },
-        webiste: {
+        website: {
             type: String,
         },
     },

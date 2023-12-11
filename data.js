@@ -24,12 +24,6 @@ exports.vets = [
         website: 'http://www.brunswickcentralvet.com.au/',
     },
     {
-        name: 'Brunswick Central Vet Clinic',
-        address: '210 Lygon St, Brunswick East VIC 3055',
-        phone: 93814411,
-        website: 'http://www.brunswickcentralvet.com.au/',
-    },
-    {
         name: 'Advanced Vetcare',
         address: '26 Robertson St, Kensington VIC 3031',
         phone: 90920400,

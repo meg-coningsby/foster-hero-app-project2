@@ -1,4 +1,4 @@
-# 🐱 Foster Hero App 🐱
+# 🐱 [Foster Hero App](https://foster-hero-app.onrender.com/) 🐱
 
 This is Project 2 for my General Assembly Course - Software Engineering Immsersive.
 
@@ -43,7 +43,7 @@ This app is coded using:
 
 ## 🏁 Getting Started
 
-More to come.
+Head over to the app [here](https://foster-hero-app.onrender.com/).
 
 <a id="item-four"></a>
 

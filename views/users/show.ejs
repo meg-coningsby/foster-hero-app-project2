@@ -1,12 +1,19 @@
 <%- include('../partials/header') %>
-    <h1><%= user.name %></h1>
-    <div>
-        <a href="/users" class="button-link-main">BACK TO ALL FOSTER CARERS</a>
-    </div><br>
-
+    <h1>
+        <%= user.name %>
+    </h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">All Foster Carers</a></li>
+        <li>
+            <%= user.name %>
+        </li>
+    </ul>
     <section id="user-show-page">
         <div class="show-user-details">
-            <h3>Foster Carer Details</h3>
+            <div class="show-user-image">
+                <img src="<%= user.avatar %>">
+            </div>
             <div>
                 <strong>Role:</strong>
                 <%= user.role %>
@@ -16,53 +23,56 @@
                 <%= user.status %>
             </div>
         </div>
-        <% if (user._id.toString() === loggedInUserId.toString()) { %>
-        <div class="show-user-buttons">
-            <a href="/users/<%= user._id %>/edit" class="button-link-main">EDIT / UPDATE DETAILS</a>
-        </div>
-        <% } else { %>
-            <h5>Not allowed to edit this user</h5>
-            <% } %>
-        <div class="show-user-cats">
-            <h3>Cats In Care & Up For Adoption</h3>
-            <% if (catsInCare.length) { %>
-                <table id="show-list">
-                    <thead>
-                        <tr>
-                            <th>Cat</th>
-                            <th>Health Status</th>
-                            <th>Age</th>
-                            <th>Colour</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% catsInCare.forEach(function(c) { %>
-                            <tr>
-                                <td><a href="/cats/<%= c._id %>"><img src="<%= c.image %>" class="user-cat-image"></a><br>
-                                    <a href="/cats/<%= c._id %>">
-                                        <%= c.name %>
-                                    </a></td>
-                                <td>
-                                    <%= c.healthStatus %>
-                                </td>
-                                <td>
-                                    <%= c.age %>
-                                </td>
-                                <td>
-                                    <%= c.colour %>
-                                </td>
-                                <td>
-                                    <%= c.status %>
-                                </td>
-                            </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
+        <% if (user._id.toString()===loggedInUserId.toString()) { %>
+            <div class="show-user-buttons">
+                <a href="/users/<%= user._id %>/edit" class="button-link-main">EDIT / UPDATE DETAILS</a>
+            </div>
             <% } else { %>
-                <h5>No Cats Yet</h5>
+                <h5>Not allowed to edit this user</h5>
                 <% } %>
-        </div>
+                    <hr>
+                    <div class="show-user-cats">
+                        <h3>Cats In Care & Up For Adoption</h3>
+                        <% if (catsInCare.length) { %>
+                            <table id="show-list">
+                                <thead>
+                                    <tr>
+                                        <th>Cat</th>
+                                        <th>Health Status</th>
+                                        <th>Age</th>
+                                        <th>Colour</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% catsInCare.forEach(function(c) { %>
+                                        <tr>
+                                            <td><a href="/cats/<%= c._id %>"><img src="<%= c.image %>"
+                                                        class="user-cat-image"></a><br>
+                                                <a href="/cats/<%= c._id %>">
+                                                    <%= c.name %>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <%= c.healthStatus %>
+                                            </td>
+                                            <td>
+                                                <%= c.age %>
+                                            </td>
+                                            <td>
+                                                <%= c.colour %>
+                                            </td>
+                                            <td>
+                                                <%= c.status %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                            <% } else { %>
+                                <h5>No Cats Yet</h5>
+                                <% } %>
+                    </div>
     </section>
 
     <%- include('../partials/footer') %>
