@@ -17,7 +17,9 @@
             <div class="show-cat-details">
                 <div>
                     <strong>Foster Carer: </strong>
-                    <%= fosterCarerName %>
+                    <u><a href="/users/<%= cat.carer %>">
+                        <%= fosterCarerName %>
+                    </a></u>
                 </div>
                 <div>
                     <strong>Status: </strong>
