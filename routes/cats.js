@@ -12,7 +12,6 @@ router.get('/:id', ensureLoggedIn, catsController.show);
 router.post('/', ensureLoggedIn, catsController.create);
 router.put('/:id', ensureLoggedIn, catsController.update);
 router.get('/:id/edit', ensureLoggedIn, catsController.edit);
-router.post('/:id/users', ensureLoggedIn, catsController.addUserToCat);
 router.delete('/:id', ensureLoggedIn, catsController.delete);
 
 module.exports = router;

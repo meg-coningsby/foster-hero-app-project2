@@ -55,18 +55,7 @@
                     <strong>Adopt Date: </strong><%= cat.adoptDate ? cat.adoptDate.toLocaleDateString() : '' %></div>
             </div>
             <div class="show-edit-cat-buttons">
-                <h3>Edit Cat Details</h3>
                 <div class="show-edit-cat-div">
-                    <div>
-                        <form id="add-user-to-cat" action="/cats/<%= cat._id %>/users" method="POST">
-                            <select name="user">
-                                <%- users.map(u=>
-                                    `<option value="${u._id}">${u.name}</option>`
-                                    ).join('') %>
-                            </select>
-                            <button type="submit">ADD / UPDATE FOSTER CARER</button>
-                        </form>
-                    </div>
                     <div>
                         <a href="/cats/<%= cat._id %>/edit" class="button-link-main">EDIT / UPDATE CAT DETAILS</a>
                     </div>

@@ -77,6 +77,10 @@ async function create(req, res) {
 async function edit(req, res) {
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
+    const currentUser = await User.find({
+        _id: cat.carer,
+    });
+    const currentUserName = currentUser[0].name;
     let intakeDate = cat.intake;
     let birthDate = cat.birthDate;
     let adoptDate = cat.adoptDate;
@@ -90,6 +94,7 @@ async function edit(req, res) {
         birthDate,
         adoptDate,
         users,
+        currentUserName,
     });
 }
 
@@ -131,13 +136,6 @@ async function remove(req, res) {
     }
 }
 
-async function addUserToCat(req, res) {
-    const cat = await Cat.findById(req.params.id);
-    cat.carer = req.body.user;
-    await cat.save();
-    res.redirect(`/cats/${cat._id}`);
-}
-
 module.exports = {
     index,
     indexAdoptable,
@@ -149,7 +147,6 @@ module.exports = {
     edit,
     update,
     delete: remove,
-    addUserToCat,
     calculateKittenAge,
 };
 
