@@ -12,7 +12,7 @@ const vetSchema = new Schema(
             required: true,
         },
         phone: {
-            type: Number,
+            type: String,
         },
         website: {
             type: String,

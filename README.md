@@ -76,8 +76,10 @@ Screenshots to come.
 
 Planned future enhancements for the app:
 
--   Link animals together via a parent or sibling relationship.
--   Allow edit / remove access for admins, even if it isn't their animal / user profile.
+-   Link animals together via a parent or sibling relationships.
+-   Allow add / edit of vets for admin users.
+-   Have filtering of vet appointments between past & upcoming appointments.
+-   Allow editing / deletion of vet appointments, but only by the foster carer of the animal or an admin.
 
 <a id="item-six"></a>
 
