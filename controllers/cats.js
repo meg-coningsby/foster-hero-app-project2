@@ -35,6 +35,7 @@ async function newCat(req, res) {
 }
 
 async function show(req, res) {
+    const loggedInUserRole = req.user.role;
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
     const vets = await Vet.find({}).sort('name');
@@ -61,6 +62,7 @@ async function show(req, res) {
         appts,
         loggedInUserId,
         currentUserId,
+        loggedInUserRole,
         errorMsg: '',
     });
 }
@@ -88,6 +90,7 @@ async function create(req, res) {
 
 async function edit(req, res) {
     const loggedInUserId = req.user._id;
+    const loggedInUserRole = req.user.role;
     const cat = await Cat.findById(req.params.id);
     const users = await User.find({}).sort('name');
     const currentUser = await User.find({
@@ -101,7 +104,10 @@ async function edit(req, res) {
     intakeDate = intakeDate !== undefined ? formatDate(intakeDate) : undefined;
     birthDate = birthDate !== undefined ? formatDate(birthDate) : undefined;
     adoptDate = adoptDate !== undefined ? formatDate(adoptDate) : undefined;
-    if (loggedInUserId.toString() === currentUserId.toString()) {
+    if (
+        loggedInUserId.toString() === currentUserId.toString() ||
+        loggedInUserRole === 'Admin'
+    ) {
         res.render('cats/edit', {
             cat,
             title: `Edit ${cat.name}`,

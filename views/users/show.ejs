@@ -19,7 +19,7 @@
             <%= user.status %>
         </div>
     </div>
-    <% if (user._id.toString()===loggedInUserId.toString()) { %>
+    <% if (user._id.toString()===loggedInUserId.toString() || loggedInUserRole === 'Admin') { %>
     <div class="show-user-buttons">
         <div>
             <a href="/users/<%= user._id %>/edit" class="button-link-main"

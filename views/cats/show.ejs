@@ -65,7 +65,7 @@
             </div>
             <br />
             <div class="show-edit-cat-buttons">
-                <% if (currentUserId.toString()===loggedInUserId.toString()) {
+                <% if (currentUserId.toString()===loggedInUserId.toString() || loggedInUserRole === 'Admin') {
                 %>
                 <div>
                     <a

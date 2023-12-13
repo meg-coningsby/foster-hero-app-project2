@@ -30,6 +30,7 @@ async function indexInactive(req, res) {
 
 async function show(req, res) {
     const loggedInUserId = req.user._id;
+    const loggedInUserRole = req.user.role;
     const user = await User.findById(req.params.id);
     const catsInCare = await Cat.find({
         carer: req.params.id,
@@ -40,14 +41,20 @@ async function show(req, res) {
         user,
         catsInCare,
         loggedInUserId,
-        errorMsg: '',
+        loggedInUserRole,
+        err: '',
     });
 }
 
 async function edit(req, res) {
     const loggedInUserId = req.user._id;
+    const loggedInUserRole = req.user.role;
+    console.log(loggedInUserRole);
     const user = await User.findById(req.params.id);
-    if (user._id.toString() === loggedInUserId.toString()) {
+    if (
+        user._id.toString() === loggedInUserId.toString() ||
+        loggedInUserRole === 'Admin'
+    ) {
         res.render('users/edit', {
             user,
             title: `Edit ${user.name}`,
