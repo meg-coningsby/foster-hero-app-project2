@@ -3,9 +3,14 @@ const User = require('../models/user');
 
 async function index(req, res) {
     const users = await User.find({}).sort('name');
+    const allCatsInCare = await Cat.find({
+        status: { $in: ['In Care', 'Up for Adoption'] },
+    }).populate('carer');
+    const userCounts = getCarerCatCount(users, allCatsInCare);
     res.render('users/index', {
         title: 'All Foster Carers',
         users,
+        userCounts,
     });
 }
 
@@ -89,3 +94,22 @@ module.exports = {
     update,
     delete: remove,
 };
+
+// Other functions to help with the above
+
+function getCarerCatCount(users, cats) {
+    const carerCatCount = {};
+    cats.forEach((cat) => {
+        const carerId = cat.carer._id.toString();
+        if (carerCatCount[carerId]) {
+            carerCatCount[carerId].count++;
+        } else {
+            carerCatCount[carerId] = {
+                carer: cat.carer.name,
+                count: 1,
+            };
+        }
+    });
+    const result = Object.values(carerCatCount);
+    return result;
+}
