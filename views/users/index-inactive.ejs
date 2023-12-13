@@ -12,6 +12,7 @@
     <table id="show-list">
         <thead>
             <tr>
+                <th>Avatar</th>
                 <th>Name</th>
                 <th>Status</th>
             </tr>
@@ -19,6 +20,7 @@
         <tbody>
             <% users.forEach(function(u) { %>
                 <tr>
+                    <td><a href="/users/<%= u._id %>"><img src="<%= u.avatar %>" class="user-image"></a></td>
                     <td><a href="/users/<%= u._id %>">
                             <%= u.name %>
                         </a></td>

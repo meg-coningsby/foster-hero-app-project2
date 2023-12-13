@@ -25,7 +25,7 @@ body {
     color: var(--main-blue);
     margin: 0;
     display: grid;
-    grid-template-rows: 60px 1fr 70px;
+    grid-template-rows: 60px 1fr 60px;
     grid-template-areas:
         'nav'
         'main'
@@ -339,6 +339,10 @@ ul.breadcrumb li a:hover {
 
 .user-cat-image {
     width: 100px;
+}
+
+.user-image {
+    width: 75px;
 }
 
 .show-user-buttons {
