@@ -303,6 +303,13 @@ ul.breadcrumb li a:hover {
 
 .cat-name {
     text-align: center;
+    font-size: larger;
+    padding-top: 0.4em;
+    height: 35px;
+}
+
+.cat-name > a:hover {
+    color: var(--beige);
 }
 
 .show-cat-image img {
