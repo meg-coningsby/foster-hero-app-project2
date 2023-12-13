@@ -65,9 +65,6 @@ async function edit(req, res) {
 
 async function update(req, res) {
     const user = await User.findById(req.params.id);
-    for (let key in req.body) {
-        if (req.body[key] === '') delete req.body[key];
-    }
     try {
         const result = await User.updateOne(
             { _id: req.params.id },

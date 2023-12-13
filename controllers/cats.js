@@ -128,9 +128,6 @@ async function update(req, res) {
     req.body.vaccinated = !!req.body.vaccinated;
     req.body.desexed = !!req.body.desexed;
     req.body.adopted = !!req.body.adopted;
-    for (let key in req.body) {
-        if (req.body[key] === '') delete req.body[key];
-    }
     try {
         const result = await Cat.updateOne(
             { _id: req.params.id },
