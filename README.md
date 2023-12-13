@@ -9,6 +9,7 @@ This is Project 2 for my General Assembly Course - Software Engineering Immsersi
 -   [Getting Started](#item-three)
 -   [App Screenshots](#item-four)
 -   [Next Steps](#item-five)
+-   [Resources / Links](#item-six)
 
 <a id="item-one"></a>
 
@@ -34,7 +35,6 @@ This app is coded using:
 -   JavaScript
 -   HTML
 -   CSS
--   MongoDB
 -   Mongoose
 -   Express
 -   Node
@@ -47,14 +47,14 @@ Head over to the app [here](https://foster-hero-app.onrender.com/).
 
 1. Log in
 
-You will need to log in to see most of the pages on the app. Unauthenticated users can only see a list of cats that are currently up for adoption - no other pages. Logging in does create a user profile for you - which is added to the app's Foster Carers (as if this app was used with a real world rescue group, all that log in would be members of the group). You can delete these profile once you are finished browsing the app, see step 3 below.
+You will need to log in to see most of the pages on the app. Unauthenticated users can only see a list of cats that are currently up for adoption - no other pages. Logging in does create a user profile for you - which is added to the app's Foster Carers (as if this app was used with a real world rescue group, all that log in would be members of the group). You can delete your profile once you are finished browsing the app, see step 3 below.
 
 2. Browse the app.
 
 You will notice that some things are not editable by your user - you can only:
 
 -   Edit or delete your own Foster Carer profile.
--   Edit or remove any cats you created (all other cats are uneditable by your user).
+-   Edit or remove any cats you created (all other cats are not editable by your user).
 -   Add a vet appointment for a cat you created.
 -   Add or delete notes to a cat. You can only delete a note you created.
 
@@ -62,7 +62,7 @@ You will notice that some things are not editable by your user - you can only:
 
 If you want to remove your user profile on the app, head to Foster Carers and then your specific user page. You should see a 'Remove' button. Please note, removing your user profile will log you out of the app.
 
-Please note, all the data already included in the app is just for demo purposes. No real data was used (although all the cats linked to the Foster Carer 'Meg' were all my foster cats at one point - their data has been made up, but their photos and names are real! All have been adopted and are now in new homes.)
+_Please note, all the data included in the app is just for demo purposes. Most of the data in the app has been made up, although all the cats linked to the Foster Carer 'Meg' were all my foster cats at one point. The details of each of these cats are still made up, but their photos and names are real! All have been adopted and are now in new homes._
 
 <a id="item-four"></a>
 
@@ -93,7 +93,6 @@ All Vets
 Planned future enhancements for the app:
 
 -   Link animals together via a parent or sibling relationships.
--   Allow add / edit of vets for admin users.
 -   Have filtering of vet appointments between past & upcoming appointments.
 -   Allow editing / deletion of vet appointments, but only by the foster carer of the animal or an admin.
 
