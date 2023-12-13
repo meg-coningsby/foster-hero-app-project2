@@ -49,14 +49,18 @@ Head over to the app [here](https://foster-hero-app.onrender.com/).
 
 You will need to log in to see most of the pages on the app. Unauthenticated users can only see a list of cats that are currently up for adoption - no other pages. Logging in does create a user profile for you - which is added to the app's Foster Carers (as if this app was used with a real world rescue group, all that log in would be members of the group). You can delete these profile once you are finished browsing the app, see step 3 below.
 
-2. Browse the app. You will notice that some things are not editable by your user - you can only:
+2. Browse the app.
+
+You will notice that some things are not editable by your user - you can only:
 
 -   Edit or delete your own Foster Carer profile.
 -   Edit or remove any cats you created (all other cats are uneditable by your user).
 -   Add a vet appointment for a cat you created.
 -   Add or delete notes to a cat. You can only delete a note you created.
 
-3. Delete your user profile (if you wish). If you want to remove your user profile on the app, head to Foster Carers and then your specific user page. You should see a 'Remove' button. Please note, removing your user profile will log you out of the app.
+3. Delete your user profile (if you wish).
+
+If you want to remove your user profile on the app, head to Foster Carers and then your specific user page. You should see a 'Remove' button. Please note, removing your user profile will log you out of the app.
 
 Please note, all the data already included in the app is just for demo purposes. No real data was used (although all the cats linked to the Foster Carer 'Meg' were all my foster cats at one point - their data has been made up, but their photos and names are real! All have been adopted and are now in new homes.)
 

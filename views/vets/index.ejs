@@ -1,30 +1,26 @@
 <%- include('../partials/header') %>
-    <h1>ALL VETS</h1>
-    <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li>All Vets</li>
-    </ul>
-    <table id="show-list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Phone</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% vets.forEach(function(v) { %>
-                <tr>
-                    <td><a href="/vets/<%= v._id %>">
-                            <%= v.name %>
-                        </a></td>
-                    <td>
-                        <%= v.address %>
-                    </td>
-                    <td><%= v.phone %></td>
-                </tr>
-                <% }) %>
-        </tbody>
-    </table>
+<h1>ALL VETS</h1>
+<ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li>All Vets</li>
+</ul>
+<table id="show-list">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% vets.forEach(function(v) { %>
+        <tr>
+            <td><a href="/vets/<%= v._id %>"> <%= v.name %> </a></td>
+            <td><%= v.address %></td>
+            <td><%= v.phone %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
 
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

@@ -1,66 +1,58 @@
 <%- include('../partials/header') %>
-    <h1>
-        <%= vet.name %>
-    </h1>
-    <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li><a href="/vets">All Vets</a></li>
-        <li><%= vet.name %></li>
-    </ul>
+<h1><%= vet.name %></h1>
+<ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/vets">All Vets</a></li>
+    <li><%= vet.name %></li>
+</ul>
 
-    <section id="vet-show-page">
-        <div class="show-vet-details">
-            <div>
-                <strong>Address:</strong>
-                <%= vet.address %>
-            </div>
-            <div>
-                <strong>Phone: </strong>
-                <%= vet.phone %>
-            </div>
-            <div>
-                <strong>Website: </strong>
-                <a href="<%= vet.website %>">
-                    <%= vet.website %>
-                </a>
-            </div>
+<section id="vet-show-page">
+    <div class="show-vet-details">
+        <div>
+            <strong>Address:</strong>
+            <%= vet.address %>
         </div>
-        <div class="show-vet-appts">
-            <h3>
-                <%= vet.name %> Appointments
-            </h3>
-            <% if (appts.length) { %>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Cat</th>
-                            <th>Reason for Visit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% appts.forEach(function(a) { %>
-                            <tr>
-                                <td>
-                                    <%= a.date.toLocaleDateString() %>
-                                </td>
-                                <td><a href="/cats/<%= a.cat._id %>"><img src="<%= a.cat.image %>"
-                                            class="user-cat-image"></a><br>
-                                    <a href="/cats/<%= a.cat._id %>">
-                                        <%= a.cat.name %>
-                                    </a>
-                                </td>
-                                <td>
-                                    <%= a.reason %>
-                                </td>
-                            </tr>
-                            <% }); %>
-                    </tbody>
-                </table>
-                <% } else { %>
-                    <h5>No Appts Yet</h5>
-                    <% } %>
+        <div>
+            <strong>Phone: </strong>
+            <%= vet.phone %>
         </div>
-    </section>
+        <div>
+            <strong>Website: </strong>
+            <a href="<%= vet.website %>"> <%= vet.website %> </a>
+        </div>
+    </div>
+    <div class="show-vet-appts">
+        <h3><%= vet.name %> Appointments</h3>
+        <% if (appts.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Cat</th>
+                    <th>Reason for Visit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% appts.forEach(function(a) { %>
+                <tr>
+                    <td><%= a.date.toLocaleDateString() %></td>
+                    <td>
+                        <a href="/cats/<%= a.cat._id %>"
+                            ><img
+                                src="<%= a.cat.image %>"
+                                class="user-cat-image" /></a
+                        ><br />
+                        <a href="/cats/<%= a.cat._id %>"> <%= a.cat.name %> </a>
+                    </td>
+                    <td><%= a.reason %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+        <h5>No Appts Yet</h5>
+        <% } %>
+    </div>
+</section>
 
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

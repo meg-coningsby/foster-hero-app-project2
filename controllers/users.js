@@ -63,19 +63,21 @@ async function update(req, res) {
                 $set: req.body,
             }
         );
+        res.redirect(`/users/${user._id}`);
     } catch (err) {
         console.log(err);
+        res.render('error', err);
     }
-    res.redirect(`/users/${user._id}`);
 }
 
 async function remove(req, res) {
     try {
         const result = await User.deleteOne({ _id: req.params.id });
+        res.redirect('/users');
     } catch (err) {
         console.log(err);
+        res.render('error', err);
     }
-    res.redirect('/users');
 }
 
 module.exports = {

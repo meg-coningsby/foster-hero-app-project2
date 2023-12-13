@@ -38,8 +38,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-sessionStore.on('error', function (error) {
-    console.log(error);
+sessionStore.on('error', function (err) {
+    console.log(err);
 });
 
 app.use(

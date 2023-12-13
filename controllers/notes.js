@@ -13,10 +13,11 @@ async function create(req, res) {
     cat.notes.push(req.body);
     try {
         await cat.save();
+        res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
+        res.render('error', err);
     }
-    res.redirect(`/cats/${cat._id}`);
 }
 
 async function deleteNote(req, res) {

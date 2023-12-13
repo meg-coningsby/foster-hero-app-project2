@@ -132,19 +132,21 @@ async function update(req, res) {
                 $set: req.body,
             }
         );
+        res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
+        res.render('error', err);
     }
-    res.redirect(`/cats/${cat._id}`);
 }
 
 async function remove(req, res) {
     try {
         const result = await Cat.deleteOne({ _id: req.params.id });
+        res.redirect('/cats');
     } catch (err) {
         console.log(err);
+        res.render('error', err);
     }
-    res.redirect('/cats');
 }
 
 module.exports = {

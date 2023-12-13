@@ -1,28 +1,26 @@
 <%- include('../partials/header') %>
-    <h1>CATS IN CARE</h1>
-    <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li>All Cats</li>
-    </ul>
-    <div class="filtering-links">
-        <a href="/cats" class="button-link-main">ALL</a>
-        <a href="/cats/incare" class="button-link-main active-filter">IN CARE</a>
-        <a href="/cats/adoptable" class="button-link-main">UP FOR ADOPTION</a>
-        <a href="/cats/adopted" class="button-link-main">ADOPTED</a>
+<h1>CATS IN CARE</h1>
+<ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li>All Cats</li>
+</ul>
+<div class="filtering-links">
+    <a href="/cats" class="button-link-main">ALL</a>
+    <a href="/cats/incare" class="button-link-main active-filter">IN CARE</a>
+    <a href="/cats/adoptable" class="button-link-main">UP FOR ADOPTION</a>
+    <a href="/cats/adopted" class="button-link-main">ADOPTED</a>
+</div>
+<div class="all-cats">
+    <% cats.forEach(function(c) { %>
+    <div class="cat">
+        <div class="cat-image">
+            <img src="<%= c.image %>" />
+        </div>
+        <div class="cat-name">
+            <a href="/cats/<%= c._id %>"> <%= c.name %> </a>
+        </div>
     </div>
-    <div class="all-cats">
-        <% cats.forEach(function(c) { %>
-            <div class="cat">
-                <div class="cat-image">
-                    <img src="<%= c.image %>">
-                </div>
-                <div class="cat-name">
-                    <a href="/cats/<%= c._id %>">
-                        <%= c.name %>
-                    </a>
-                </div>
-            </div>
-            <% }) %>
-    </div>
+    <% }) %>
+</div>
 
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

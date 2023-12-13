@@ -2,7 +2,7 @@ const Vet = require('../models/vet');
 const Appt = require('../models/appt');
 
 async function index(req, res) {
-    const vets = await Vet.find({});
+    const vets = await Vet.find({}).sort('name');
     res.render('vets/index', { title: 'All Vets', vets });
 }
 
