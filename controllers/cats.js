@@ -35,7 +35,7 @@ async function newCat(req, res) {
 }
 
 async function show(req, res) {
-    const cat = await Cat.findById(req.params.id);
+    const cat = await Cat.findById(req.params.id).populate('carer');
     const vets = await Vet.find({}).sort('name');
     const appts = await Appt.find({ cat: req.params.id }).populate('vet');
     const loggedInUserRole = req.user.role;
@@ -44,18 +44,9 @@ async function show(req, res) {
         _id: cat.carer,
     });
     const currentUserId = currentUser[0]._id;
-    let fosterCarer = null;
-    let fosterCarerName = null;
-    if (cat.carer != null) {
-        fosterCarer = await User.find({
-            _id: cat.carer,
-        });
-        fosterCarerName = fosterCarer[0].name;
-    }
     res.render('cats/show', {
         title: `${cat.name}`,
         cat,
-        fosterCarerName,
         vets,
         appts,
         loggedInUserId,
