@@ -18,14 +18,30 @@ async function indexActive(req, res) {
     const users = await User.find({
         status: 'Active',
     });
-    res.render('users/index-active', { title: 'Active Foster Carers', users });
+    const allCatsInCare = await Cat.find({
+        status: { $in: ['In Care', 'Up for Adoption'] },
+    }).populate('carer');
+    const userCounts = getCarerCatCount(users, allCatsInCare);
+    res.render('users/index-active', {
+        title: 'Active Foster Carers',
+        users,
+        userCounts,
+    });
 }
 
 async function indexInactive(req, res) {
     const users = await User.find({
         status: 'Inactive',
     });
-    res.render('users/index-inactive', { title: 'Inactive Carers', users });
+    const allCatsInCare = await Cat.find({
+        status: { $in: ['In Care', 'Up for Adoption'] },
+    }).populate('carer');
+    const userCounts = getCarerCatCount(users, allCatsInCare);
+    res.render('users/index-inactive', {
+        title: 'Inactive Carers',
+        users,
+        userCounts,
+    });
 }
 
 async function show(req, res) {

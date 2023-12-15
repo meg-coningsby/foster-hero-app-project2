@@ -144,11 +144,13 @@ async function update(req, res) {
 
 async function remove(req, res) {
     try {
-        const result = await Cat.deleteOne({ _id: req.params.id });
+        const deleteCat = await Cat.deleteOne({ _id: req.params.id });
+        const deleteCatsAppts = await Appt.deleteMany({ cat: req.params.id });
+        console.log(deleteCatsAppts);
         res.redirect('/cats');
     } catch (err) {
         console.log(err);
-        res.render('error', err);
+        res.redirect('/cats');
     }
 }
 
