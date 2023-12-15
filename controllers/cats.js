@@ -189,9 +189,11 @@ function calculateKittenAge(birthDate) {
 
 // Convert the date object into the right string format to be passed in to as a value for the edit page
 function formatDate(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
+    if (date !== null) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
 
-    return `${year}-${month}-${day}`;
+        return `${year}-${month}-${day}`;
+    }
 }
