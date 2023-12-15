@@ -3,7 +3,7 @@ const Appt = require('../models/appt');
 const Vet = require('../models/vet');
 
 async function index(req, res) {
-    let appts = await Appt.find({})
+    const appts = await Appt.find({})
         .populate('cat')
         .populate('vet')
         .sort({ date: -1 });
@@ -22,7 +22,7 @@ async function create(req, res) {
         res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
-        res.render('error', err);
+        res.redirect(`/cats/${cat._id}`);
     }
 }
 
