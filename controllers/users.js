@@ -65,7 +65,6 @@ async function show(req, res) {
 async function edit(req, res) {
     const loggedInUserId = req.user._id;
     const loggedInUserRole = req.user.role;
-    console.log(loggedInUserRole);
     const user = await User.findById(req.params.id);
     if (
         user._id.toString() === loggedInUserId.toString() ||
@@ -91,7 +90,7 @@ async function update(req, res) {
         res.redirect(`/users/${user._id}`);
     } catch (err) {
         console.log(err);
-        res.render('error', err);
+        res.redirect(`/users/${user._id}`);
     }
 }
 
@@ -101,7 +100,7 @@ async function remove(req, res) {
         res.redirect('/users');
     } catch (err) {
         console.log(err);
-        res.render('error', err);
+        res.redirect('/users');
     }
 }
 

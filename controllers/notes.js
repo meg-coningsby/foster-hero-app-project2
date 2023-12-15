@@ -16,7 +16,7 @@ async function create(req, res) {
         res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
-        res.render('error', err);
+        res.redirect(`/cats/${cat._id}`);
     }
 }
 

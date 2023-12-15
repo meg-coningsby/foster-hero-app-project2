@@ -138,7 +138,7 @@ async function update(req, res) {
         res.redirect(`/cats/${cat._id}`);
     } catch (err) {
         console.log(err);
-        res.render('error', err);
+        res.redirect(`/cats/${cat._id}`);
     }
 }
 
@@ -146,7 +146,6 @@ async function remove(req, res) {
     try {
         const deleteCat = await Cat.deleteOne({ _id: req.params.id });
         const deleteCatsAppts = await Appt.deleteMany({ cat: req.params.id });
-        console.log(deleteCatsAppts);
         res.redirect('/cats');
     } catch (err) {
         console.log(err);
