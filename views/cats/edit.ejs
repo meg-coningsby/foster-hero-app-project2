@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
-    <h1>Edit / Update <%= cat.name %></h1>
+    <h1>Edit / Update <%= cat.name %>
+    </h1>
     <ul class="breadcrumb">
         <li><a href="/">Home</a></li>
         <li><a href="/cats">All Cats</a></li>
@@ -25,16 +26,17 @@
         <label>Care Status:</label>
         <select name="status">
             <option value="In Care" <%=cat.status==='In Care' ? 'selected' : '' %>>In Care</option>
-            <option value="Up for Adoption" <%=cat.status==='Up for Adoption' ? 'selected' : '' %>>Up for Adoption</option>
+            <option value="Up for Adoption" <%=cat.status==='Up for Adoption' ? 'selected' : '' %>>Up for Adoption
+            </option>
             <option value="Adopted" <%=cat.status==='Adopted' ? 'selected' : '' %>>Adopted</option>
         </select><br>
         <label>Intake Date:
             <input type="date" name="intake" value="<%= intakeDate %>">
         </label><br>
         <label>Gender:
-            <input type="radio" id="female" name="gender" value="Female" <%= cat.gender === "Female" ? 'checked' : '' %>>
+            <input type="radio" id="female" name="gender" value="Female" <%=cat.gender==="Female" ? 'checked' : '' %>>
             <label for="female">Female</label>
-            <input type="radio" id="male" name="gender" value="Male" <%= cat.gender === "Male" ? 'checked' : '' %>>
+            <input type="radio" id="male" name="gender" value="Male" <%=cat.gender==="Male" ? 'checked' : '' %>>
             <label for="male">Male</label><br>
         </label><br>
         <label>Birthdate:
@@ -44,16 +46,16 @@
         <input type="text" name="colour" value="<%= cat.colour %>"><br>
         <label>Health Status:</label>
         <select name="healthStatus">
-            <option value="Healthy" <%= cat.healthStatus === 'Healthy' ? 'selected' : '' %>>Healthy</option>
-            <option value="Recovering" <%= cat.healthStatus === 'Recovering' ? 'selected' : '' %>>Recovering</option>
-            <option value="Unwell" <%= cat.healthStatus === 'Unwell' ? 'selected' : '' %>>Unwell</option>
+            <option value="Healthy" <%=cat.healthStatus==='Healthy' ? 'selected' : '' %>>Healthy</option>
+            <option value="Recovering" <%=cat.healthStatus==='Recovering' ? 'selected' : '' %>>Recovering</option>
+            <option value="Unwell" <%=cat.healthStatus==='Unwell' ? 'selected' : '' %>>Unwell</option>
         </select><br>
         <label>Microchip Number:</label>
         <input type="number" name="microchipNumber" value="<%= cat.microchipNumber %>"><br>
         <label>Vaccinated:</label>
-        <input type="checkbox" name="vaccinated" <%= cat.vaccinated === true ? 'checked' : '' %>><br>
+        <input type="checkbox" name="vaccinated" <%=cat.vaccinated===true ? 'checked' : '' %>><br>
         <label>Desexed:</label>
-        <input type="checkbox" name="desexed" <%= cat.desexed === true ? 'checked' : '' %>><br>
+        <input type="checkbox" name="desexed" <%=cat.desexed===true ? 'checked' : '' %>><br>
         <label>Adoption Date:
             <input type="date" name="adoptDate" value="<%= adoptDate %>">
         </label><br>

@@ -1,207 +1,181 @@
 <%- include('../partials/header') %>
-<h1><%= cat.name %></h1>
-<ul class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/cats">All Cats</a></li>
-    <li><%= cat.name %></li>
-</ul>
-<section id="cat-show-page">
-    <div class="cat-show-page-div">
-        <div class="show-cat-image">
-            <img src="<%= cat.image %>" />
-        </div>
-        <div class="show-cat-details">
-            <div>
-                <strong>Foster Carer: </strong>
-                <u
-                    ><a href="/users/<%= cat.carer %>">
-                        <%= fosterCarerName %>
-                    </a></u
-                >
+    <h1>
+        <%= cat.name %>
+    </h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/cats">All Cats</a></li>
+        <li>
+            <%= cat.name %>
+        </li>
+    </ul>
+    <section id="cat-show-page">
+        <div class="cat-show-page-div">
+            <div class="show-cat-image">
+                <img src="<%= cat.image %>" />
             </div>
-            <div>
-                <strong>Status: </strong>
-                <%= cat.status %>
-            </div>
-            <div>
-                <strong>Gender: </strong>
-                <%= cat.gender %>
-            </div>
-            <div>
-                <strong>Age: </strong>
-                <%= cat.age %>
-            </div>
-            <div>
-                <strong>Colour: </strong>
-                <%= cat.colour %>
-            </div>
-            <div>
-                <strong>Health Status: </strong>
-                <%= cat.healthStatus %>
-            </div>
-            <div>
-                <strong>Intake Date: </strong>
-                <%= cat.intake ? cat.intake.toLocaleDateString() : '' %>
-            </div>
-            <div>
-                <strong>Birth Date: </strong>
-                <%= cat.birthDate ? cat.birthDate.toLocaleDateString() : '' %>
-            </div>
-            <div>
-                <strong>Microchip Number: </strong>
-                <%= cat.microchipNumber %>
-            </div>
-            <div>
-                <strong>Vaccinated: </strong>
-                <%= cat.vaccinated %>
-            </div>
-            <div>
-                <strong>Desexed: </strong>
-                <%= cat.desexed %>
-            </div>
-            <div>
-                <strong>Adopt Date: </strong>
-                <%= cat.adoptDate ? cat.adoptDate.toLocaleDateString() : '' %>
-            </div>
-            <br />
-            <div class="show-edit-cat-buttons">
-                <% if (currentUserId.toString()===loggedInUserId.toString() || loggedInUserRole === 'Admin') {
-                %>
+            <div class="show-cat-details">
                 <div>
-                    <a
-                        href="/cats/<%= cat._id %>/edit"
-                        class="button-link-main"
-                        id="edit-cat-button"
-                        >EDIT / UPDATE CAT DETAILS</a
-                    >
+                    <strong>Foster Carer: </strong>
+                    <u><a href="/users/<%= cat.carer %>">
+                            <%= fosterCarerName %>
+                        </a></u>
                 </div>
                 <div>
-                    <form
-                        method="POST"
-                        action="/cats/<%= cat._id %>?_method=DELETE"
-                    >
-                        <input
-                            id="name-delete"
-                            type="submit"
-                            name="name"
-                            value="REMOVE <%= cat.name %>"
-                            class="form-input-button"
-                        />
-                    </form>
+                    <strong>Status: </strong>
+                    <%= cat.status %>
                 </div>
-                <% } else { %>
-                <h5>Not allowed to edit this cat</h5>
-                <% } %>
-            </div>
-        </div>
-        <hr />
-        <div class="show-cat-vet-appts">
-            <h3>Vet Appointments</h3>
-            <form
-                id="add-appt-to-cat"
-                action="/cats/<%= cat._id %>/appts"
-                method="POST"
-            >
-                <label>Vet: </label>
-                <select name="vet" required>
-                    <%- vets.map(v=> `
-                    <option value="${v._id}">${v.name}</option>
-                    ` ).join('') %></select
-                ><br />
-                <label
-                    >Date:
-                    <input type="date" name="date" required /> </label
-                ><br />
-                <label>Reason: </label>
-                <textarea name="reason" required></textarea><br />
-                <button type="submit">ADD VET APPT</button>
-            </form>
-            <br />
-            <% if (appts.length) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Vet</th>
-                        <th>Date</th>
-                        <th>Reason</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% appts.forEach(function(a) { %>
-                    <tr>
-                        <td>
-                            <a href="/vets/<%= a.vet._id %>">
-                                <%= a.vet.name %>
-                            </a>
-                        </td>
-                        <td><%= a.date.toLocaleDateString() %></td>
-                        <td><%= a.reason %></td>
-                    </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-            <% } else { %>
-            <h5>No Appts Yet</h5>
-            <% } %>
-        </div>
-        <hr />
-        <div class="show-cat-notes">
-            <h3>Notes</h3>
-            <form
-                id="add-note-form"
-                method="POST"
-                action="/cats/<%= cat._id %>/notes"
-            >
-                <label>Add notes or comments here.</label><br />
-                <textarea name="content" required></textarea><br />
-                <input
-                    type="submit"
-                    value="ADD NOTE"
-                    class="form-input-button"
-                />
-            </form>
-            <% if (cat.notes.length) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>User</th>
-                        <th>Date</th>
-                        <th>Note</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% cat.notes.forEach(function(n) { %>
-                    <tr>
-                        <td class="note-user">
-                            <img
-                                alt="avatar"
-                                src="<%= n.userAvatar %>"
-                                referrerpolicy="no-referrer"
-                            />
-                            <%= n.userName %>
-                        </td>
-                        <td><%= n.createdAt.toLocaleDateString() %></td>
-                        <td><%= n.content %></td>
-                        <td>
-                            <% if (user?._id.equals(n.user)) { %>
-                            <form
-                                action="/notes/<%= n._id %>?_method=DELETE"
-                                method="POST"
-                            >
-                                <button type="submit">DELETE</button>
+                <div>
+                    <strong>Gender: </strong>
+                    <%= cat.gender %>
+                </div>
+                <div>
+                    <strong>Age: </strong>
+                    <%= cat.age %>
+                </div>
+                <div>
+                    <strong>Colour: </strong>
+                    <%= cat.colour %>
+                </div>
+                <div>
+                    <strong>Health Status: </strong>
+                    <%= cat.healthStatus %>
+                </div>
+                <div>
+                    <strong>Intake Date: </strong>
+                    <%= cat.intake ? cat.intake.toLocaleDateString() : '' %>
+                </div>
+                <div>
+                    <strong>Birth Date: </strong>
+                    <%= cat.birthDate ? cat.birthDate.toLocaleDateString() : '' %>
+                </div>
+                <div>
+                    <strong>Microchip Number: </strong>
+                    <%= cat.microchipNumber %>
+                </div>
+                <div>
+                    <strong>Vaccinated: </strong>
+                    <%= cat.vaccinated %>
+                </div>
+                <div>
+                    <strong>Desexed: </strong>
+                    <%= cat.desexed %>
+                </div>
+                <div>
+                    <strong>Adopt Date: </strong>
+                    <%= cat.adoptDate ? cat.adoptDate.toLocaleDateString() : '' %>
+                </div>
+                <br />
+                <div class="show-edit-cat-buttons">
+                    <% if (currentUserId.toString()===loggedInUserId.toString() || loggedInUserRole==='Admin' ) { %>
+                        <div>
+                            <a href="/cats/<%= cat._id %>/edit" class="button-link-main" id="edit-cat-button">EDIT /
+                                UPDATE CAT DETAILS</a>
+                        </div>
+                        <div>
+                            <form method="POST" action="/cats/<%= cat._id %>?_method=DELETE">
+                                <input id="name-delete" type="submit" name="name" value="REMOVE <%= cat.name %>"
+                                    class="form-input-button" />
                             </form>
+                        </div>
+                        <% } else { %>
+                            <h5>Not allowed to edit this cat</h5>
                             <% } %>
-                        </td>
-                    </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-            <% } else { %>
-            <h5>No Notes Yet</h5>
-            <% } %>
+                </div>
+            </div>
+            <hr />
+            <div class="show-cat-vet-appts">
+                <h3>Vet Appointments</h3>
+                <form id="add-appt-to-cat" action="/cats/<%= cat._id %>/appts" method="POST">
+                    <label>Vet: </label>
+                    <select name="vet" required>
+                        <%- vets.map(v=> `
+                            <option value="${v._id}">${v.name}</option>
+                            ` ).join('') %></select><br />
+                    <label>Date: <input type="date" name="date" required /> </label><br />
+                    <label>Reason: </label>
+                    <textarea name="reason" required></textarea><br />
+                    <button type="submit">ADD VET APPT</button>
+                </form>
+                <br />
+                <% if (appts.length) { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Vet</th>
+                                <th>Date</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% appts.forEach(function(a) { %>
+                                <tr>
+                                    <td>
+                                        <a href="/vets/<%= a.vet._id %>">
+                                            <%= a.vet.name %>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <%= a.date.toLocaleDateString() %>
+                                    </td>
+                                    <td>
+                                        <%= a.reason %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <h5>No Appts Yet</h5>
+                        <% } %>
+            </div>
+            <hr />
+            <div class="show-cat-notes">
+                <h3>Notes</h3>
+                <form id="add-note-form" method="POST" action="/cats/<%= cat._id %>/notes">
+                    <label>Add notes or comments here.</label><br />
+                    <textarea name="content" required></textarea><br />
+                    <input type="submit" value="ADD NOTE" class="form-input-button" />
+                </form>
+                <% if (cat.notes.length) { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Date</th>
+                                <th>Note</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% cat.notes.forEach(function(n) { %>
+                                <tr>
+                                    <td class="note-user">
+                                        <img alt="avatar" src="<%= n.userAvatar %>" referrerpolicy="no-referrer" />
+                                        <%= n.userName %>
+                                    </td>
+                                    <td>
+                                        <%= n.createdAt.toLocaleDateString() %>
+                                    </td>
+                                    <td>
+                                        <%= n.content %>
+                                    </td>
+                                    <td>
+                                        <% if (user?._id.equals(n.user)) { %>
+                                            <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
+                                                <button type="submit">DELETE</button>
+                                            </form>
+                                            <% } %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <h5>No Notes Yet</h5>
+                        <% } %>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

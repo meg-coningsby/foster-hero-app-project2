@@ -1,62 +1,55 @@
 <%- include('../partials/header') %>
-<h1>ADD A CAT</h1>
-<ul class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/cats">All Cats</a></li>
-    <li>Add a New Cat</li>
-</ul>
-<form id="new-form" action="/cats" method="POST">
-    <label>Name:</label>
-    <input type="text" name="name" /><br />
-    <label>Image URL:</label>
-    <input type="text" name="image" /><br />
-    <label>Foster Carer:</label>
-    <select name="carer">
-        <%- users.map(u=> `
-        <option value="${u._id}">${u.name}</option>
-        ` ).join('') %></select
-    ><br />
-    <label>Care Status:</label>
-    <select name="status">
-        <option value="In Care">In Care</option>
-        <option value="Up for Adoption">Up for Adoption</option>
-        <option value="Adopted">Adopted</option></select
-    ><br />
-    <label
-        >Intake Date:
-        <input type="date" name="intake" /> </label
-    ><br />
-    <label
-        >Gender:
-        <input type="radio" id="female" name="gender" value="Female" />
-        <label for="html">Female</label>
-        <input type="radio" id="male" name="gender" value="Male" />
-        <label for="male">Male</label><br /> </label
-    ><br />
-    <label
-        >Birthdate:
-        <input type="date" name="birthDate" /> </label
-    ><br />
-    <label>Colour:</label>
-    <input type="text" name="colour" /><br />
-    <label>Health Status:</label>
-    <select name="healthStatus">
-        <option value="Healthy">Healthy</option>
-        <option value="Recovering">Recovering</option>
-        <option value="Unwell">Unwell</option></select
-    ><br />
-    <label>Microchip Number:</label>
-    <input type="number" name="microchipNumber" /><br />
-    <label>Vaccinated:</label>
-    <input type="checkbox" name="vaccinated" />
-    <label>Desexed:</label>
-    <input type="checkbox" name="desexed" /><br />
-    <label
-        >Adoption Date:
-        <input type="date" name="adoptDate" /> </label
-    ><br />
-    <input type="submit" value="Add Cat" class="form-input-button" />
-</form>
-<p><%= errorMsg %></p>
+    <h1>ADD A CAT</h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/cats">All Cats</a></li>
+        <li>Add a New Cat</li>
+    </ul>
+    <form id="new-form" action="/cats" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" /><br />
+        <label>Image URL:</label>
+        <input type="text" name="image" /><br />
+        <label>Foster Carer:</label>
+        <select name="carer">
+            <%- users.map(u=> `
+                <option value="${u._id}">${u.name}</option>
+                ` ).join('') %></select><br />
+        <label>Care Status:</label>
+        <select name="status">
+            <option value="In Care">In Care</option>
+            <option value="Up for Adoption">Up for Adoption</option>
+            <option value="Adopted">Adopted</option>
+        </select><br />
+        <label>Intake Date:
+            <input type="date" name="intake" /> </label><br />
+        <label>Gender:
+            <input type="radio" id="female" name="gender" value="Female" />
+            <label for="html">Female</label>
+            <input type="radio" id="male" name="gender" value="Male" />
+            <label for="male">Male</label><br /> </label><br />
+        <label>Birthdate:
+            <input type="date" name="birthDate" /> </label><br />
+        <label>Colour:</label>
+        <input type="text" name="colour" /><br />
+        <label>Health Status:</label>
+        <select name="healthStatus">
+            <option value="Healthy">Healthy</option>
+            <option value="Recovering">Recovering</option>
+            <option value="Unwell">Unwell</option>
+        </select><br />
+        <label>Microchip Number:</label>
+        <input type="number" name="microchipNumber" /><br />
+        <label>Vaccinated:</label>
+        <input type="checkbox" name="vaccinated" />
+        <label>Desexed:</label>
+        <input type="checkbox" name="desexed" /><br />
+        <label>Adoption Date:
+            <input type="date" name="adoptDate" /> </label><br />
+        <input type="submit" value="Add Cat" class="form-input-button" />
+    </form>
+    <p>
+        <%= errorMsg %>
+    </p>
 
 <%- include('../partials/footer') %>

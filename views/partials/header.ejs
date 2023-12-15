@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title><%= title ?? 'Foster Hero' %> | Foster Hero</title>
+    <title>
+        <%= title ?? 'Foster Hero' %> | Foster Hero
+    </title>
 </head>
 
 <body>
@@ -14,7 +16,8 @@
         <a href="/" class="nav-home">HOME</a>
         <% if (user) { %>
             <div class="dropdown">
-                <a href="/cats" <%- title === 'All Cats' ? 'class="active dropdown-main"' : 'class="dropdown-main"' %>>CATS</a>
+                <a href="/cats" <%- title==='All Cats' ? 'class="active dropdown-main"' : 'class="dropdown-main"'
+                    %>>CATS</a>
                 <div class="dropdown-content">
                     <a href="/cats/new">ADD A NEW CAT</a>
                     <a href="/cats">ALL CATS</a>
@@ -23,14 +26,16 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="/users" <%- title === 'All Foster Carers' ? 'class="active dropdown-main"' : 'class="dropdown-main"' %>>FOSTER CARERS</a>
+                <a href="/users" <%- title==='All Foster Carers' ? 'class="active dropdown-main"'
+                    : 'class="dropdown-main"' %>>FOSTER CARERS</a>
                 <div class="dropdown-content">
                     <a href="/users">ALL FOSTER CARERS</a>
                     <a href="/users/active">ACTIVE FOSTER CARERS</a>
                 </div>
             </div>
             <div class="dropdown">
-                <a href="/vets" <%- title === 'All Vets' ? 'class="active dropdown-main"' : 'class="dropdown-main"' %>>VETS</a>
+                <a href="/vets" <%- title==='All Vets' ? 'class="active dropdown-main"' : 'class="dropdown-main"'
+                    %>>VETS</a>
                 <div class="dropdown-content">
                     <a href="/vets">ALL VETS</a>
                     <a href="/appts">ALL VET APPOINTMENTS</a>

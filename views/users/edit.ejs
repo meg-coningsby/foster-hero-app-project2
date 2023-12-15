@@ -1,28 +1,32 @@
 <%- include('../partials/header') %>
-<h1>Edit / Update <%= user.name %></h1>
-<ul class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/users">All Foster Carers</a></li>
-    <li><a href="/users/<%= user._id %>"><%= user.name %></a></li>
-    <li>Edit <%= user.name %></li>
-</ul>
-<form id="edit-form" action="/users/<%= user.id %>?_method=PUT" method="POST">
-    <label>Name:</label>
-    <input type="text" name="name" value="<%= user.name %>" /><br />
-    <label>Email:</label>
-    <input type="text" name="email" value="<%= user.email %>" /><br />
-    <label>Avatar Image:</label>
-    <input type="text" name="avatar" value="<%= user.avatar %>" /><br />
-    <label
-        >Status: <input type="radio" id="active" name="status" value="Active"
-        <%=user.status==="Active" ? 'checked' : '' %>>
-        <label for="active">Active</label>
-        <input type="radio" id="inactive" name="status" value="Inactive"
-        <%=user.status==="Inactive" ? 'checked' : '' %>>
-        <label for="inactive">Inactive</label><br /> </label
-    ><br />
-    <input type="submit" value="Update" class="form-input-button" />
-</form>
-<p><%= errorMsg %></p>
+    <h1>Edit / Update <%= user.name %>
+    </h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">All Foster Carers</a></li>
+        <li><a href="/users/<%= user._id %>">
+                <%= user.name %>
+            </a></li>
+        <li>Edit <%= user.name %>
+        </li>
+    </ul>
+    <form id="edit-form" action="/users/<%= user.id %>?_method=PUT" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" value="<%= user.name %>" /><br />
+        <label>Email:</label>
+        <input type="text" name="email" value="<%= user.email %>" /><br />
+        <label>Avatar Image:</label>
+        <input type="text" name="avatar" value="<%= user.avatar %>" /><br />
+        <label>Status: <input type="radio" id="active" name="status" value="Active" <%=user.status==="Active"
+                ? 'checked' : '' %>>
+            <label for="active">Active</label>
+            <input type="radio" id="inactive" name="status" value="Inactive" <%=user.status==="Inactive" ? 'checked'
+                : '' %>>
+            <label for="inactive">Inactive</label><br /> </label><br />
+        <input type="submit" value="Update" class="form-input-button" />
+    </form>
+    <p>
+        <%= errorMsg %>
+    </p>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
