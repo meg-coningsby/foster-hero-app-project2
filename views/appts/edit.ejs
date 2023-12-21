@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+    <h1>Edit / Update Appt</h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/appts">All Vet Appts</a></li>
+        <li>Edit Appt</li>
+    </ul>
+    <form id="edit-form" action="/appts/<%= appt.id %>?_method=PUT" method="POST">
+        <label>Vet: </label>
+        <select name="vet" required>
+            <% vets.forEach(v=> { %>
+                <option value="<%= v._id %>" <%=v.name===currentVetName ? 'selected' : '' %>>
+                    <%= v.name %>
+                </option>
+                <% }); %>
+                </select><br/>
+        <label>Date: <input type="date" name="date" value="<%= apptDate %>" required /> </label><br />
+        <label>Reason: </label>
+        <textarea name="reason" required><%= appt.reason %></textarea><br />
+        <button type="submit">UPDATE VET APPT</button>
+    </form>
+    <p>
+        <%= errorMsg %>
+    </p>
+
+<%- include('../partials/footer') %>
