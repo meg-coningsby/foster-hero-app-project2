@@ -2,7 +2,8 @@
     <h1>Edit / Update Appt</h1>
     <ul class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li><a href="/appts">All Vet Appts</a></li>
+        <li><a href="/cats">All Cats</a></li>
+        <li><a href="/cats/<%= appt.cat._id %>"><%= appt.cat.name %></a></li>
         <li>Edit Appt</li>
     </ul>
     <form id="edit-form" action="/appts/<%= appt.id %>?_method=PUT" method="POST">

@@ -123,11 +123,21 @@
                                     <td>
                                         <%= a.reason %>
                                     </td>
-                                    <td></td>
                                     <td>
-                                        <form method="POST" action="/appts/<%= a._id %>?_method=DELETE">
-                                            <input id="appt-delete" type="submit" name="name" value="DELETE APPT" class="form-input-button" />
-                                        </form>
+                                        <% if (currentUserId.toString()===loggedInUserId.toString() || loggedInUserRole==='Admin' ) { %>
+                                            <a href="/appts/<%= a._id %>/edit" class="button-link-main" id="edit-appt-link">EDIT</a>
+                                        <% } else { %>
+                                            <h5>Not allowed to edit this appt</h5>
+                                            <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (currentUserId.toString()===loggedInUserId.toString() || loggedInUserRole==='Admin' ) { %>
+                                            <form method="POST" action="/appts/<%= a._id %>?_method=DELETE">
+                                                <input id="appt-delete" type="submit" name="name" value="DELETE APPT" class="form-input-button" />
+                                            </form>
+                                        <% } else { %>
+                                            <h5>Not allowed to delete this appt</h5>
+                                            <% } %>
                                     </td>
                                 </tr>
                                 <% }); %>

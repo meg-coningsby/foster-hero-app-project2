@@ -30,7 +30,12 @@ async function create(req, res) {
 }
 
 async function edit(req, res) {
-    const appt = await Appt.findById(req.params.id);
+    const loggedInUserId = req.user._id;
+    const loggedInUserRole = req.user.role;
+    const appt = await Appt.findById(req.params.id).populate({
+        path: 'cat',
+        populate: { path: 'carer' },
+    });
     const vets = await Vet.find({}).sort('name');
     const currentVet = await Vet.find({
         _id: appt.vet,
@@ -38,23 +43,47 @@ async function edit(req, res) {
     const currentVetName = currentVet[0].name;
     let apptDate = appt.date;
     apptDate = formatDate(apptDate);
-    res.render('appts/edit', {
-        title: `Edit Appt`,
-        appt,
-        vets,
-        currentVetName,
-        apptDate,
-        errorMsg: '',
-    });
+    if (
+        loggedInUserRole === 'Admin' ||
+        appt.cat.carer._id.toString() === loggedInUserId.toString()
+    ) {
+        res.render('appts/edit', {
+            title: `Edit Appt`,
+            appt,
+            vets,
+            currentVetName,
+            apptDate,
+            errorMsg: '',
+        });
+    } else res.redirect('/cats');
+}
+
+async function update(req, res) {
+    const appt = await Appt.findById(req.params.id).populate('cat');
+    const catId = appt.cat._id;
+    console.log(appt.cat);
+    try {
+        const result = await Appt.updateOne(
+            { _id: req.params.id },
+            {
+                $set: req.body,
+            }
+        );
+    } catch (err) {
+        console.log(err);
+    }
+    res.redirect(`/cats/${catId}`);
 }
 
 async function remove(req, res) {
+    const appt = await Appt.findById(req.params.id).populate('cat');
+    console.log(appt);
     try {
         const deleteAppt = await Appt.deleteOne({ _id: req.params.id });
-        res.redirect('/appts');
+        res.redirect(`/cats/${appt.cat._id}`);
     } catch (err) {
         console.log(err);
-        res.redirect('/appts');
+        res.redirect(`/cats/${appt.cat._id}`);
     }
 }
 
@@ -62,6 +91,7 @@ module.exports = {
     index,
     create,
     edit,
+    update,
     delete: remove,
 };
 

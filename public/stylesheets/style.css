@@ -337,6 +337,10 @@ ul.breadcrumb li a:hover {
     padding-right: 0.5em;
 }
 
+#edit-appt-link {
+    text-decoration: none;
+}
+
 /* user & vet & vet appts pages styling */
 
 .show-user-details > div,
