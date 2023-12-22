@@ -13,6 +13,32 @@ async function index(req, res) {
     res.render('appts/index', { title: 'All Vet Appts', appts });
 }
 
+async function indexUpcoming(req, res) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const appts = await Appt.find({ date: { $gte: today } })
+        .populate('vet')
+        .populate({
+            path: 'cat',
+            populate: { path: 'carer' },
+        })
+        .sort({ date: -1 });
+    res.render('appts/index-upcoming', { title: 'Upcoming Vet Appts', appts });
+}
+
+async function indexPast(req, res) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const appts = await Appt.find({ date: { $lt: today } })
+        .populate('vet')
+        .populate({
+            path: 'cat',
+            populate: { path: 'carer' },
+        })
+        .sort({ date: -1 });
+    res.render('appts/index-past', { title: 'Past Vet Appts', appts });
+}
+
 async function create(req, res) {
     const cat = await Cat.findById(req.params.id);
     for (let key in req.body) {
@@ -89,6 +115,8 @@ async function remove(req, res) {
 
 module.exports = {
     index,
+    indexUpcoming,
+    indexPast,
     create,
     edit,
     update,
