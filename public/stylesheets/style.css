@@ -289,6 +289,11 @@ ul.breadcrumb li a:hover {
 }
 
 /* cat pages styling */
+.search-bar {
+    font-size: 14px;
+    margin-bottom: 2em;
+}
+
 .all-cats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -367,6 +372,13 @@ ul.breadcrumb li a:hover {
 @media (min-width: 768px) {
     nav {
         font-size: 16px;
+    }
+
+    .filter-and-search {
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
     }
 
     .all-cats {
