@@ -294,11 +294,29 @@ ul.breadcrumb li a:hover {
     margin-bottom: 2em;
 }
 
+.hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.active {
+    background-color: var(--beige);
+}
+
 .all-cats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.5em;
     justify-items: center;
+}
+
+.pagination {
+    grid-column: 1 / 3;
 }
 
 .cat-image img {
@@ -388,6 +406,10 @@ ul.breadcrumb li a:hover {
         justify-items: center;
     }
 
+    .pagination {
+        grid-column: 1 / 4;
+    }
+
     .cat-show-page-div {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -449,5 +471,9 @@ ul.breadcrumb li a:hover {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 0.5em;
         justify-items: center;
+    }
+
+    .pagination {
+        grid-column: 1 / 5;
     }
 }

@@ -95,9 +95,9 @@ Planned future enhancements for the app:
 -   Link animals together via a parent or sibling relationships.
 -   ~~Have filtering of vet appointments between past & upcoming appointments.~~ Completed 23/12
 -   ~~Allow editing / deletion of vet appointments, but only by the foster carer of the animal or an admin.~~ Completed 22/12
--   ~~Search functionality for searching through all cats~~ Completed 27/12
--   Pagination for the index pages
--   Ability to upload image (not add an image URL)
+-   ~~Search functionality for searching through all cats.~~ Completed 27/12
+-   ~~Pagination for the cat index page.~~ Completed 28/12
+-   Ability to upload image (not add an image URL).
 
 <a id="item-six"></a>
 
